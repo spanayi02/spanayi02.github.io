@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About — Stylianos Panagiotou</title>
+    <meta name="description" content="About Stylianos Panagiotou — CS undergraduate from Nicosia, Cyprus." />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png?v=3">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png?v=3">
+    <link rel="manifest" href="favicon_io/site.webmanifest?v=3">
+
+    <meta name="color-scheme" content="dark light" />
+    <style>
+        :root {
+            --bg: #0b0a19;
+            --fg: #eef2ff;
+            --muted: #b9c0d4;
+            --glass: rgba(255, 255, 255, .06);
+            --line: rgba(255, 255, 255, .12);
+            --violet: #8b5cf6;
+            --pink: #ec4899;
+            --cyan: #22d3ee;
+            --card: #0f0e24
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #fbfaff;
+                --fg: #0b0a19;
+                --muted: #5b6170;
+                --glass: rgba(10, 10, 30, .06);
+                --line: rgba(20, 20, 40, .12);
+                --card: #fff
+            }
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font: 16px/1.65 Inter, ui-sans-serif;
+            color: var(--fg);
+            background: var(--bg)
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(1200px 800px at 30% -10%, rgba(139, 92, 246, .35), transparent 60%),
+                radial-gradient(1200px 800px at 80% 120%, rgba(236, 72, 153, .25), transparent 60%),
+                radial-gradient(1000px 700px at -10% 80%, rgba(34, 211, 238, .25), transparent 60%)
+        }
+
+        .noise {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            mix-blend-mode: soft-light;
+            opacity: .08;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.35"/></svg>');
+            background-size: 160px 160px
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: saturate(160%) blur(8px);
+            background: linear-gradient(180deg, rgba(15, 14, 36, .65), rgba(15, 14, 36, .30));
+            border-bottom: 1px solid var(--line)
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            letter-spacing: .08em
+        }
+
+        .logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: conic-gradient(from 200deg, var(--violet), var(--pink), var(--cyan), var(--violet))
+        }
+
+        .menu {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .menu a {
+            padding: 8px 10px;
+            border-radius: 10px;
+            color: var(--muted)
+        }
+
+        .menu a:hover {
+            background: var(--glass);
+            color: var(--fg)
+        }
+
+        .cta {
+            background: linear-gradient(90deg, var(--violet), var(--pink));
+            color: white !important;
+            font-weight: 800;
+            padding: 10px 14px;
+            border-radius: 999px
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 28px
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 52px);
+            margin: 24px 0 8px
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, var(--violet), var(--pink), var(--cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent
+        }
+
+        .sub {
+            color: var(--muted)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+            margin-top: 22px
+        }
+
+        @media(min-width:980px) {
+            .grid {
+                grid-template-columns: 380px 1fr
+            }
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden
+        }
+
+        .card-body {
+            padding: 16px 18px
+        }
+
+        .portrait {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px
+        }
+
+        .badge {
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .04);
+            padding: 6px 10px;
+            border-radius: 999px;
+            color: #e9e7ff
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px
+        }
+
+        @media(min-width:640px) {
+            .facts {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        .facts div {
+            background: rgba(255, 255, 255, .04);
+            border: 1px dashed var(--line);
+            border-radius: 12px;
+            padding: 10px 12px
+        }
+
+        .facts strong {
+            display: block;
+            color: #ddd
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 18px;
+            padding-left: 18px
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(var(--violet), var(--pink))
+        }
+
+        .t {
+            position: relative;
+            margin: 14px 0 14px 10px;
+            padding-left: 16px
+        }
+
+        .t::before {
+            content: "";
+            position: absolute;
+            left: -9px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--violet);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, .25)
+        }
+
+        .t small {
+            color: var(--muted)
+        }
+
+        /* New gradient footer with icons (shared style) */
+        .site-footer {
+            margin-top: 34px;
+            padding: 28px 16px;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            background:
+                radial-gradient(600px 220px at 50% 0, rgba(139, 92, 246, .14), transparent 60%),
+                linear-gradient(180deg, rgba(15, 14, 36, .60), rgba(15, 14, 36, .92));
+        }
+
+        .site-footer p {
+            margin: 0 0 10px
+        }
+
+        .site-footer .social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            margin: 0 8px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--glass);
+            color: var(--fg);
+            transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+        }
+
+        .site-footer .social a:hover {
+            transform: translateY(-2px);
+            border-color: transparent;
+            background: linear-gradient(90deg, var(--violet), var(--pink));
+            box-shadow: 0 10px 28px rgba(139, 92, 246, .35);
+            color: #0b0a19;
+        }
+
+        .site-footer svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+            fill: currentColor
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="noise"></div>
+
+    <div class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="index.html"><span class="logo"></span> Stylianos Panagiotou</a>
+            <nav class="menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="Stylianos_Panagiotou_CV_new.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
+                <a href="portfolio.html">Portfolio</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="wrap">
+        <h1><span class="gradient">About Me</span></h1>
+        <p class="sub">CS undergraduate who learns fast, solves problems, and enjoys building clean, user-friendly
+            software.</p>
+
+        <section class="grid">
+            <article class="card">
+                <img class="portrait" src="profile.jpg" alt="Portrait of Stylianos Panagiotou" />
+                <div class="card-body">
+                    <div class="badges">
+                        <span class="badge">Team Player</span>
+                        <span class="badge">Autonomous</span>
+                        <span class="badge">Quick Learner</span>
+                        <span class="badge">Attention to Detail</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-body">
+                    <h2 style="margin:0 0 6px">Computer Science Undergraduate</h2>
+                    <p class="sub" style="margin:0 0 12px">University of Cyprus · Nicosia, Cyprus.</p>
+
+                    <div class="facts">
+                        <div><strong>City</strong>Nicosia, Cyprus</div>
+                        <div><strong>Phone</strong>+357 96897966</div>
+                        <div><strong>Email</strong><a href="mailto:spanay02@gmail.com">spanay02@gmail.com</a></div>
+                        <div><strong>Address</strong>Nicosia, Geri</div>
+                        <div><strong>LinkedIn</strong><a
+                                href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank"
+                                rel="noopener">https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/</a></div>
+                        <div><strong>GitHub</strong><a href="https://github.com/spanayi02" target="_blank"
+                                rel="noopener">github.com/spanayi02</a></div>
+                    </div>
+
+                    <h3 style="margin:16px 0 6px">Skills</h3>
+                    <div class="badges">
+                        <span class="badge">C</span><span class="badge">C++</span><span class="badge">Java</span>
+                        <span class="badge">HTML</span><span class="badge">CSS</span><span
+                            class="badge">JavaScript</span>
+                        <span class="badge">MSSQL</span><span class="badge">React</span><span
+                            class="badge">Next.js</span>
+                        <span class="badge">Firebase</span><span class="badge">Git</span><span class="badge">Android
+                            Studio</span>
+                        <span class="badge">XAMPP</span><span class="badge">Figma</span><span
+                            class="badge">Justinmind</span>
+                        <span class="badge">Microsoft Office</span>
+                    </div>
+
+                    <h3 style="margin:18px 0 6px">Experience</h3>
+                    <div class="timeline">
+                        <div class="t"><strong>IT Support Intern — PwC Cyprus</strong><br><small>Jun 2025 – Present ·
+                                Nicosia</small></div>
+                        <div class="t"><strong>Databases Intern — Playtech BGT Sports</strong><br><small>Jun 2024 – Aug
+                                2024 · Nicosia</small></div>
+                        <div class="t"><strong>Barman — Aelia Wellness Retreat</strong><br><small>Jun 2021 – Sep 2023 ·
+                                Nicosia</small></div>
+                        <div class="t"><strong>Sales Assistant (IT Dept) — ITC PublicWorld Ltd</strong><br><small>Oct
+                                2021 – Oct 2022 · Nicosia</small></div>
+                        <div class="t"><strong>Rapid Test Clerk — Highworth Ltd</strong><br><small>Apr 2021 – Jun 2021 ·
+                                Nicosia</small></div>
+                        <div class="t"><strong>Waiter — Iparcho Tavern</strong><br><small>Jun 2017 – Dec 2018 ·
+                                Nicosia</small></div>
+                    </div>
+
+                    <h3 style="margin:18px 0 6px">Education</h3>
+                    <div class="timeline">
+                        <div class="t"><strong>University of Cyprus — B.Sc. Computer Science</strong><br><small>Sep 2021
+                                – May 2025 · Nicosia</small></div>
+                        <div class="t"><strong>Latsia Lyceum — High School Graduate</strong><br><small>Sep 2017 – Jul
+                                2020 · Nicosia</small></div>
+                    </div>
+
+                    <h3 style="margin:18px 0 6px">Certification</h3>
+                    <div class="timeline">
+                        <div class="t"><strong>Cambridge IGCSE — English as a Second Language (Grade A)</strong></div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- New Footer with icons -->
+    <footer class="site-footer">
+        <p>© <span id="y"></span> <strong>Stylianos Panagiotou</strong></p>
+        <div class="social">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank" rel="noopener"
+                aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.9h.05c.53-.95 1.82-1.94 3.75-1.94 4.01 0 4.75 2.64 4.75 6.07V21h-4v-4.93c0-1.18-.02-2.69-1.64-2.69-1.64 0-1.89 1.28-1.89 2.61V21H9z" />
+                </svg>
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/spanayi02" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.41-4.04-1.41-.55-1.41-1.34-1.79-1.34-1.79-1.1-.76.08-.75.08-.75 1.21.08 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.69.25 2.94.12 3.25.78.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.64-5.49 5.95.43.37.81 1.1.81 2.23v3.3c0 .32.21.7.83.58A12 12 0 0 0 12 .5z" />
+                </svg>
+            </a>
+            <!-- Email -->
+            <a href="mailto:spanay02@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

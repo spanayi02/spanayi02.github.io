@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stylianos Panagiotou — Portfolio</title>
+  <meta name="description"
+    content="Developer portfolio for Stylianos Panagiotou — CS undergraduate in Nicosia, Cyprus." />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png?v=3">
+  <link rel="manifest" href="favicon_io/site.webmanifest?v=3">
+
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root {
+      --bg: #0b0a19;
+      --fg: #eef2ff;
+      --muted: #b9c0d4;
+      --glass: rgba(255, 255, 255, .06);
+      --line: rgba(255, 255, 255, .12);
+      --violet: #8b5cf6;
+      --violet-2: #a78bfa;
+      --pink: #ec4899;
+      --cyan: #22d3ee;
+      --card: #0f0e24
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fbfaff;
+        --fg: #0b0a19;
+        --muted: #5b6170;
+        --glass: rgba(10, 10, 30, .06);
+        --line: rgba(20, 20, 40, .12);
+        --card: #fff
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu;
+      color: var(--fg);
+      background: var(--bg);
+      overflow-x: hidden
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: radial-gradient(1200px 800px at 30% -10%, rgba(139, 92, 246, .35), transparent 60%), radial-gradient(1200px 800px at 80% 120%, rgba(236, 72, 153, .25), transparent 60%), radial-gradient(1000px 700px at -10% 80%, rgba(34, 211, 238, .25), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, 0))
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+      opacity: .08;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.35"/></svg>');
+      background-size: 160px 160px
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(160%) blur(8px);
+      background: linear-gradient(180deg, rgba(15, 14, 36, .65), rgba(15, 14, 36, .30));
+      border-bottom: 1px solid var(--line)
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: .08em
+    }
+
+    .logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: conic-gradient(from 200deg, var(--violet), var(--pink), var(--cyan), var(--violet));
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, .15) inset
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    .menu a {
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted)
+    }
+
+    .menu a:hover {
+      background: var(--glass);
+      color: var(--fg)
+    }
+
+    .cta {
+      background: linear-gradient(90deg, var(--violet), var(--pink));
+      color: white !important;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, .25)
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 24px
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      align-items: center;
+      padding: 72px 0
+    }
+
+    @media (max-width:860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center
+      }
+    }
+
+    .kicker {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 700
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.05;
+      margin: 8px 0 10px
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--violet), var(--pink), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(18px, 2.5vw, 22px);
+      max-width: 60ch
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--glass);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: var(--fg)
+    }
+
+    .btn:hover {
+      border-color: transparent;
+      background: linear-gradient(90deg, rgba(139, 92, 246, .25), rgba(236, 72, 153, .25))
+    }
+
+    .primary {
+      background: linear-gradient(90deg, var(--violet), var(--pink));
+      border: none;
+      color: #0b0a19
+    }
+
+    .type {
+      display: inline
+    }
+
+    .caret {
+      display: inline-block;
+      width: .65ch;
+      height: 1.05em;
+      background: linear-gradient(90deg, var(--violet-2), var(--pink));
+      transform: translateY(.18em);
+      animation: blink 1s steps(1, end) infinite
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    .art {
+      position: relative;
+      aspect-ratio: 4/3;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .35)
+    }
+
+    .ring {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 74%;
+      height: 74%;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 255, 255, .18);
+      animation: spin 24s linear infinite
+    }
+
+    .orb {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 18%;
+      height: 18%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, .1) 45%, rgba(255, 255, 255, 0) 65%);
+      box-shadow: 0 8px 40px rgba(167, 139, 250, .35);
+      animation: float 6s ease-in-out infinite
+    }
+
+    .glow1 {
+      position: absolute;
+      filter: blur(40px);
+      bottom: -10%;
+      left: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(closest-side, rgba(139, 92, 246, .65), transparent)
+    }
+
+    .glow2 {
+      position: absolute;
+      filter: blur(40px);
+      top: -10%;
+      right: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(closest-side, rgba(236, 72, 153, .55), transparent)
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes float {
+      50% {
+        transform: translate(14%, -6%) scale(1.05)
+      }
+    }
+
+    .marquee {
+      margin-top: 32px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent)
+    }
+
+    .track {
+      display: flex;
+      gap: 28px;
+      animation: mar 22s linear infinite
+    }
+
+    .pill {
+      white-space: nowrap;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--muted)
+    }
+
+    @keyframes mar {
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ---- Site footer (gradient + icon buttons) ---- */
+    .site-footer {
+      margin-top: 60px;
+      padding: 28px 16px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(600px 220px at 50% 0, rgba(139, 92, 246, .14), transparent 60%),
+        linear-gradient(180deg, rgba(15, 14, 36, .60), rgba(15, 14, 36, .92));
+    }
+
+    .site-footer p {
+      margin: 0 0 10px
+    }
+
+    .site-footer .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      margin: 0 8px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      color: var(--fg);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    }
+
+    .site-footer .social a:hover {
+      transform: translateY(-2px);
+      border-color: transparent;
+      background: linear-gradient(90deg, var(--violet), var(--pink));
+      box-shadow: 0 10px 28px rgba(139, 92, 246, .35);
+      color: #0b0a19;
+    }
+
+    .site-footer svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      fill: currentColor
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      z-index: 50;
+      transition: opacity .4s ease
+    }
+
+    .pulse {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, var(--violet), transparent);
+      animation: pulse 1.2s ease-in-out infinite
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(1.12);
+        opacity: .8
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="noise"></div>
+  <div id="loader">
+    <div class="pulse"></div>
+  </div>
+
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html"><span class="logo"></span> Stylianos Panagiotou</a>
+      <nav class="menu" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="Stylianos_Panagiotou_CV_new.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
+        <a href="portfolio.html">Portfolio</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="kicker">Software Developer · CS Undergraduate</div>
+        <h1><span class="gradient-text">Stylianos Panagiotou</span></h1>
+        <p class="lead"><span id="type" class="type"></span><span class="caret"></span></p>
+        <div class="buttons">
+          <a class="btn primary" href="about.html">About Me</a>
+          <a class="btn" href="portfolio.html">See Projects</a>
+          <a class="btn" href="mailto:spanay02@gmail.com">Contact</a>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="track" id="track">
+            <span class="pill">C</span><span class="pill">C++</span><span class="pill">Java</span>
+            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span>
+            <span class="pill">MSSQL</span><span class="pill">React</span><span class="pill">Next.js</span>
+            <span class="pill">Firebase</span><span class="pill">Git</span><span class="pill">Android Studio</span>
+            <span class="pill">Figma</span><span class="pill">Justinmind</span>
+            <!-- loop -->
+            <span class="pill">C</span><span class="pill">C++</span><span class="pill">Java</span>
+            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span>
+            <span class="pill">MSSQL</span><span class="pill">React</span><span class="pill">Next.js</span>
+            <span class="pill">Firebase</span><span class="pill">Git</span><span class="pill">Android Studio</span>
+            <span class="pill">Figma</span><span class="pill">Justinmind</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="art" aria-hidden="true">
+          <div class="glow1"></div>
+          <div class="glow2"></div>
+          <div class="ring"></div>
+          <div class="orb"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- New Footer -->
+  <footer class="site-footer">
+    <p>© <span id="y"></span> <strong>Stylianos Panagiotou</strong></p>
+    <div class="social">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank" rel="noopener"
+        aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.9h.05c.53-.95 1.82-1.94 3.75-1.94 4.01 0 4.75 2.64 4.75 6.07V21h-4v-4.93c0-1.18-.02-2.69-1.64-2.69-1.64 0-1.89 1.28-1.89 2.61V21H9z" />
+        </svg>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/spanayi02" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.41-4.04-1.41-.55-1.41-1.34-1.79-1.34-1.79-1.1-.76.08-.75.08-.75 1.21.08 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.69.25 2.94.12 3.25.78.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.64-5.49 5.95.43.37.81 1.1.81 2.23v3.3c0 .32.21.7.83.58A12 12 0 0 0 12 .5z" />
+        </svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:spanay02@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5z" />
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // loader
+    window.addEventListener('load', () => {
+      const l = document.getElementById('loader');
+      l.style.opacity = '0';
+      setTimeout(() => l.remove(), 400);
+    });
+
+    // auto year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // typewriter
+    const el = document.getElementById('type');
+    const words = ["I enjoy building interactive apps", "CS Undergraduate @ UCY", "Exploring AI and Software Development"];
+    let i = 0, j = 0, isDel = false;
+    function type() {
+      const w = words[i];
+      if (isDel) {
+        el.textContent = w.substring(0, j--);
+        if (j < 0) {
+          isDel = false; i = (i + 1) % words.length;
+        }
+      } else {
+        el.textContent = w.substring(0, j++);
+        if (j > w.length + 10) isDel = true;
+      }
+      setTimeout(type, isDel ? 40 : 120);
+    }
+    type();
+  </script>
+</body>
+
+</html>
