@@ -210,6 +210,21 @@
             box-shadow: 0 18px 50px rgba(0, 0, 0, .3)
         }
 
+        .card {
+  cursor: pointer;
+}
+
+        .links a {
+  cursor: pointer;
+}
+
+
+.card:focus-visible {
+  outline: 2px solid var(--violet-2);
+  outline-offset: 4px;
+}
+
+
         .thumb {
             aspect-ratio: 16/9;
             object-fit: cover;
@@ -347,6 +362,8 @@
             box-shadow: 0 10px 28px rgba(139, 92, 246, .35);
             color: #0b0a19;
         }
+
+        
 
         .site-footer svg {
             width: 20px;
@@ -717,7 +734,25 @@ Gameplay Systems:
         closeBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
         window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-        document.querySelectorAll('.card').forEach(card => { card.addEventListener('keydown', e => { if (e.key === 'Enter') { const t = card.querySelector('.openModal'); if (t) t.click(); } }); });
+        // Make entire project cards clickable (open Details)
+document.querySelectorAll('.card').forEach(card => {
+    const detailsLink = card.querySelector('.openModal'); // first "Details" link
+
+    card.addEventListener('click', (e) => {
+        // Do not interfere with clicks on links or buttons
+        if (e.target.closest('a, button')) return;
+        if (detailsLink) detailsLink.click();
+    });
+
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (detailsLink) detailsLink.click();
+        }
+    });
+});
+
+        
     </script>
 </body>
 
