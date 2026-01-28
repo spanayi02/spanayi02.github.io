@@ -310,6 +310,64 @@
             padding: 12px 16px;
             border-bottom: 1px solid var(--line)
         }
+        .carousel {
+  position: relative;
+  width: 100%;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+#modalImg {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+  display: block;
+}
+
+.car-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, .35);
+  color: var(--fg);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+.car-btn:hover {
+  background: rgba(0, 0, 0, .55);
+}
+
+.car-btn.prev { left: 10px; }
+.car-btn.next { right: 10px; }
+
+.dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 10px 0 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: linear-gradient(90deg, var(--violet), var(--pink));
+  border-color: transparent;
+}
+
 
         .close {
             background: none;
@@ -427,12 +485,13 @@
                                 rel="noopener">GitHub</a>
 
                             <!-- High-level details -->
-                            <a href="#" class="openModal" data-title="TravelGuideApp"
-                                data-img="https://picsum.photos/seed/travelguide/1200/675" data-desc="October–December 2024. Built with Java in Android Studio. 
-           Integrated Google Maps, Location services, and photo markers with orientation filtering. 
-           Included features for capturing photos, saving markers, and browsing by orientation.">
-                                Details
-                            </a>
+                           <a href="#" class="openModal"
+  data-title="TravelGuideApp"
+  data-images="images/travel_1.png,images/travel_2.png,images/travel_3.png"
+  data-desc="October–December 2024. Built with Java in Android Studio. Integrated Google Maps, location services, and photo markers with orientation filtering.">
+  Details
+</a>
+
 
                             <!-- Technical details -->
                             <a href="#" class="openModal" data-title="TravelGuideApp — Technical Details"
@@ -487,12 +546,13 @@
                                 rel="noopener">GitHub</a>
 
                             <!-- High-level details -->
-                            <a href="#" class="openModal" data-title="RescueLine Web Application"
-                                data-img="https://picsum.photos/seed/rescue/1200/675" data-desc="October–December 2023. Developed for RescueLine, a roadside assistance company in Cyprus. 
-                    The app allows customers to request services such as Roadside Assistance and Accident Care directly online,
-                    using live location tracking to minimize delays and errors.">
-                                Details
-                            </a>
+                           <a href="#" class="openModal"
+  data-title="RescueLine Web Application"
+  data-images="images/rescue_1.png,images/rescue_2.png"
+  data-desc="October–December 2023. Web app for requesting roadside assistance with live location.">
+  Details
+</a>
+
 
                             <!-- Technical details -->
                             <a href="#" class="openModal" data-title="RescueLine — Technical Details"
@@ -543,11 +603,13 @@
                             <a href="https://github.com/ctheoc05/WebProject" target="_blank" rel="noopener">GitHub</a>
 
                             <!-- High-level details -->
-                            <a href="#" class="openModal" data-title="Jewellery Web Application"
-                                data-img="https://picsum.photos/seed/jewellery/1200/675" data-desc="July–August 2024. E-commerce web app built with Next.js. 
-                    Supports product browsing, wishlist management, authentication, and repeat orders.">
-                                Details
-                            </a>
+                          <a href="#" class="openModal"
+  data-title="Jewellery Web Application"
+  data-images="images/jewellery_1.png,images/jewellery_2.png"
+  data-desc="July–August 2024. E-commerce app built with Next.js with authentication, wishlist, and orders.">
+  Details
+</a>
+
 
                             <!-- Technical details -->
                             <a href="#" class="openModal" data-title="Jewellery Web Application — Technical Details"
@@ -675,7 +737,13 @@ Gameplay Systems:
                 <h3 id="modalTitle">Project</h3>
                 <button class="close" id="closeModal" aria-label="Close details">Close</button>
             </div>
-            <img id="modalImg" src="" alt="" style="width:100%;max-height:60vh;object-fit:cover" />
+            <div class="carousel">
+  <button class="car-btn prev" id="prevImg" aria-label="Previous image">‹</button>
+  <img id="modalImg" src="" alt="" />
+  <button class="car-btn next" id="nextImg" aria-label="Next image">›</button>
+</div>
+<div class="dots" id="dots"></div>
+
             <div class="modal-body">
                 <p id="modalDesc"></p>
             </div>
@@ -728,9 +796,75 @@ Gameplay Systems:
         const mImg = document.getElementById('modalImg');
         const mDesc = document.getElementById('modalDesc');
         const closeBtn = document.getElementById('closeModal');
-        function openModal(t, img, desc) { mTitle.textContent = t; mImg.src = img; mDesc.textContent = desc; modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); closeBtn.focus(); }
+        
         function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
-        document.querySelectorAll('.openModal').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openModal(a.dataset.title, a.dataset.img, a.dataset.desc); }));
+        const prevBtn = document.getElementById('prevImg');
+const nextBtn = document.getElementById('nextImg');
+const dotsWrap = document.getElementById('dots');
+
+let currentImages = [];
+let currentIndex = 0;
+
+function renderDots() {
+  dotsWrap.innerHTML = '';
+  currentImages.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === currentIndex ? ' active' : '');
+    d.type = 'button';
+    d.addEventListener('click', () => showImage(i));
+    dotsWrap.appendChild(d);
+  });
+}
+
+function showImage(i) {
+  if (!currentImages.length) return;
+  currentIndex = (i + currentImages.length) % currentImages.length;
+  mImg.src = currentImages[currentIndex];
+  renderDots();
+}
+
+function openModal(title, images, desc) {
+  mTitle.textContent = title;
+  mDesc.innerText = desc || '';
+
+  currentImages = images && images.length ? images : [];
+  currentIndex = 0;
+
+  if (currentImages.length) {
+    mImg.src = currentImages[0];
+  } else {
+    mImg.src = '';
+  }
+
+  const many = currentImages.length > 1;
+  prevBtn.style.display = many ? 'grid' : 'none';
+  nextBtn.style.display = many ? 'grid' : 'none';
+  dotsWrap.style.display = many ? 'flex' : 'none';
+
+  renderDots();
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  closeBtn.focus();
+}
+document.querySelectorAll('.openModal').forEach(a =>
+  a.addEventListener('click', e => {
+    e.preventDefault();
+
+    const title = a.dataset.title;
+    const desc = a.dataset.desc;
+
+    let images = [];
+    if (a.dataset.images) {
+      images = a.dataset.images.split(',').map(s => s.trim()).filter(Boolean);
+    } else if (a.dataset.img) {
+      images = [a.dataset.img];
+    }
+
+    openModal(title, images, desc);
+  })
+);
+
         closeBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
         window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
