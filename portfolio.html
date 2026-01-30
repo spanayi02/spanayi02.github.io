@@ -847,6 +847,9 @@ function openModal(title, images, desc) {
   modal.setAttribute('aria-hidden', 'false');
   closeBtn.focus();
 }
+        prevBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); showImage(currentIndex - 1); });
+nextBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); showImage(currentIndex + 1); });
+
 document.querySelectorAll('.openModal').forEach(a =>
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -867,7 +870,14 @@ document.querySelectorAll('.openModal').forEach(a =>
 
         closeBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-        window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+     window.addEventListener('keydown', e => {
+  if (!modal.classList.contains('open')) return;
+
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+});
+
         // Make entire project cards clickable (open Details)
 document.querySelectorAll('.card').forEach(card => {
     const detailsLink = card.querySelector('.openModal'); // first "Details" link
