@@ -1,4 +1,4 @@
-x<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,6 +14,7 @@ x<!DOCTYPE html>
     <link rel="manifest" href="favicon_io/site.webmanifest?v=3">
 
     <meta name="color-scheme" content="dark light" />
+
     <style>
         :root {
             --bg: #0b0a19;
@@ -25,7 +26,7 @@ x<!DOCTYPE html>
             --violet-2: #a78bfa;
             --pink: #ec4899;
             --cyan: #22d3ee;
-            --card: #0f0e24
+            --card: #0f0e24;
         }
 
         @media (prefers-color-scheme: light) {
@@ -35,33 +36,50 @@ x<!DOCTYPE html>
                 --muted: #5b6170;
                 --glass: rgba(10, 10, 30, .06);
                 --line: rgba(20, 20, 40, .12);
-                --card: #fff
+                --card: #ffffff;
             }
         }
 
         *,
         *::before,
         *::after {
-            box-sizing: border-box
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            font: 16px/1.6 Inter, ui-sans-serif;
+            font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
             color: var(--fg);
-            background: var(--bg)
+            background: var(--bg);
+            overflow-x: hidden;
         }
 
         a {
             color: inherit;
-            text-decoration: none
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font: inherit;
         }
 
         .bg {
             position: fixed;
             inset: 0;
             z-index: -2;
-            background: radial-gradient(1200px 800px at 30% -10%, rgba(139, 92, 246, .35), transparent 60%), radial-gradient(1200px 800px at 80% 120%, rgba(236, 72, 153, .25), transparent 60%), radial-gradient(1000px 700px at -10% 80%, rgba(34, 211, 238, .25), transparent 60%)
+            background:
+                radial-gradient(1200px 800px at 30% -10%, rgba(139, 92, 246, .35), transparent 60%),
+                radial-gradient(1200px 800px at 80% 120%, rgba(236, 72, 153, .25), transparent 60%),
+                radial-gradient(1000px 700px at -10% 80%, rgba(34, 211, 238, .25), transparent 60%);
         }
 
         .noise {
@@ -72,7 +90,7 @@ x<!DOCTYPE html>
             mix-blend-mode: soft-light;
             opacity: .08;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.35"/></svg>');
-            background-size: 160px 160px
+            background-size: 160px 160px;
         }
 
         .nav {
@@ -81,7 +99,7 @@ x<!DOCTYPE html>
             z-index: 20;
             backdrop-filter: saturate(160%) blur(8px);
             background: linear-gradient(180deg, rgba(15, 14, 36, .65), rgba(15, 14, 36, .30));
-            border-bottom: 1px solid var(--line)
+            border-bottom: 1px solid var(--line);
         }
 
         .nav-inner {
@@ -90,7 +108,9 @@ x<!DOCTYPE html>
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 18px
+            gap: 16px;
+            padding: 14px 18px;
+            flex-wrap: wrap;
         }
 
         .brand {
@@ -98,31 +118,43 @@ x<!DOCTYPE html>
             align-items: center;
             gap: 10px;
             font-weight: 900;
-            letter-spacing: .08em
+            letter-spacing: .06em;
+            min-width: 0;
+            font-size: 15px;
+        }
+
+        .brand span:last-child {
+            overflow-wrap: anywhere;
         }
 
         .logo {
             width: 28px;
             height: 28px;
             border-radius: 8px;
-            background: conic-gradient(from 200deg, var(--violet), var(--pink), var(--cyan), var(--violet))
+            flex-shrink: 0;
+            background: conic-gradient(from 200deg, var(--violet), var(--pink), var(--cyan), var(--violet));
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .15) inset;
         }
 
         .menu {
             display: flex;
-            gap: 18px;
-            align-items: center
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .menu a {
             padding: 8px 10px;
             border-radius: 10px;
-            color: var(--muted)
+            color: var(--muted);
+            font-size: 15px;
+            transition: .2s ease;
         }
 
         .menu a:hover {
             background: var(--glass);
-            color: var(--fg)
+            color: var(--fg);
         }
 
         .cta {
@@ -130,36 +162,39 @@ x<!DOCTYPE html>
             color: white !important;
             font-weight: 800;
             padding: 10px 14px;
-            border-radius: 999px
+            border-radius: 999px;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, .25);
         }
 
         .wrap {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 28px
+            padding: 28px;
         }
 
         h1 {
             font-size: clamp(34px, 5vw, 52px);
-            margin: 24px 0 6px
+            margin: 24px 0 6px;
+            line-height: 1.08;
         }
 
         .gradient {
             background: linear-gradient(90deg, var(--violet), var(--pink), var(--cyan));
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent
+            color: transparent;
         }
 
         .sub {
-            color: var(--muted)
+            color: var(--muted);
+            max-width: 70ch;
         }
 
         .chips {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 16px 0
+            margin: 16px 0 20px;
         }
 
         .chip {
@@ -168,30 +203,35 @@ x<!DOCTYPE html>
             padding: 8px 12px;
             border-radius: 999px;
             color: #e9e7ff;
-            cursor: pointer
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .chip:hover {
+            background: rgba(255, 255, 255, .12);
         }
 
         .chip.active {
             background: linear-gradient(90deg, var(--violet), var(--pink));
             color: #0b0a19;
-            border-color: transparent
+            border-color: transparent;
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px
+            gap: 16px;
         }
 
-        @media(min-width:740px) {
+        @media (min-width: 740px) {
             .grid {
-                grid-template-columns: 1fr 1fr
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media(min-width:1040px) {
+        @media (min-width: 1040px) {
             .grid {
-                grid-template-columns: 1fr 1fr 1fr
+                grid-template-columns: 1fr 1fr 1fr;
             }
         }
 
@@ -202,56 +242,57 @@ x<!DOCTYPE html>
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform .15s ease, box-shadow .15s ease
+            transition: transform .15s ease, box-shadow .15s ease;
+            cursor: pointer;
+            min-width: 0;
         }
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 18px 50px rgba(0, 0, 0, .3)
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .3);
         }
 
-        .card {
-  cursor: pointer;
-}
-
-        .links a {
-  cursor: pointer;
-}
-
-
-.card:focus-visible {
-  outline: 2px solid var(--violet-2);
-  outline-offset: 4px;
-}
-
+        .card:focus-visible {
+            outline: 2px solid var(--violet-2);
+            outline-offset: 4px;
+        }
 
         .thumb {
-            aspect-ratio: 16/9;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
-            width: 100%
+            width: 100%;
         }
 
         .meta {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 12px 14px
+            padding: 12px 14px;
+            min-width: 0;
+        }
+
+        .meta>div {
+            min-width: 0;
+            width: 100%;
         }
 
         .title {
-            font-weight: 800
+            font-weight: 800;
+            font-size: 18px;
+            line-height: 1.25;
         }
 
         .desc {
             color: var(--muted);
-            margin: 6px 0 0
+            margin: 6px 0 0;
+            overflow-wrap: anywhere;
         }
 
         .tags {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            margin-top: 8px
+            margin-top: 8px;
         }
 
         .tag {
@@ -259,26 +300,28 @@ x<!DOCTYPE html>
             border: 1px solid var(--line);
             padding: 4px 8px;
             border-radius: 999px;
-            color: #e9e7ff
+            color: #e9e7ff;
         }
 
         .links {
             display: flex;
             gap: 10px;
-            margin-top: 10px
+            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .links a {
             border: 1px solid var(--line);
             padding: 6px 10px;
-            border-radius: 10px
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .2s ease;
         }
 
         .links a:hover {
-            background: var(--glass)
+            background: var(--glass);
         }
 
-        /* Modal */
         .modal {
             position: fixed;
             inset: 0;
@@ -287,89 +330,104 @@ x<!DOCTYPE html>
             align-items: center;
             justify-content: center;
             padding: 20px;
-            z-index: 30
+            z-index: 30;
         }
 
         .modal.open {
-            display: flex
+            display: flex;
         }
 
         .modal-card {
             max-width: 920px;
             width: 100%;
+            max-height: 90vh;
             background: #100825;
             border: 1px solid var(--line);
             border-radius: 16px;
-            overflow: hidden
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             padding: 12px 16px;
-            border-bottom: 1px solid var(--line)
+            border-bottom: 1px solid var(--line);
         }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.25;
+        }
+
         .carousel {
-  position: relative;
-  width: 100%;
-  max-height: 60vh;
-  overflow: hidden;
-}
+            position: relative;
+            width: 100%;
+            max-height: 60vh;
+            overflow: hidden;
+            background: #000;
+        }
 
-#modalImg {
-  width: 100%;
-  max-height: 60vh;
-  object-fit: contain;
-  background: #000;
-  display: block;
-}
+        #modalImg {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            background: #000;
+            display: block;
+        }
 
+        .car-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px solid var(--line);
+            background: rgba(0, 0, 0, .35);
+            color: var(--fg);
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+        }
 
-.car-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 1px solid var(--line);
-  background: rgba(0, 0, 0, .35);
-  color: var(--fg);
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  font-size: 22px;
-}
+        .car-btn:hover {
+            background: rgba(0, 0, 0, .55);
+        }
 
-.car-btn:hover {
-  background: rgba(0, 0, 0, .55);
-}
+        .car-btn.prev {
+            left: 10px;
+        }
 
-.car-btn.prev { left: 10px; }
-.car-btn.next { right: 10px; }
+        .car-btn.next {
+            right: 10px;
+        }
 
-.dots {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  padding: 10px 0 6px;
-}
+        .dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            padding: 10px 0 6px;
+        }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: transparent;
-  cursor: pointer;
-}
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: transparent;
+            cursor: pointer;
+        }
 
-.dot.active {
-  background: linear-gradient(90deg, var(--violet), var(--pink));
-  border-color: transparent;
-}
-
+        .dot.active {
+            background: linear-gradient(90deg, var(--violet), var(--pink));
+            border-color: transparent;
+        }
 
         .close {
             background: none;
@@ -377,15 +435,21 @@ x<!DOCTYPE html>
             color: #e9e1ff;
             border-radius: 8px;
             padding: 6px 10px;
-            cursor: pointer
+            cursor: pointer;
         }
 
         .modal-body {
             padding: 14px;
-            color: var(--muted)
+            color: var(--muted);
+            overflow: auto;
         }
 
-        /* New gradient footer with icons (shared style) */
+        .modal-body p {
+            margin: 0;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+
         .site-footer {
             margin-top: 34px;
             padding: 28px 16px;
@@ -398,7 +462,14 @@ x<!DOCTYPE html>
         }
 
         .site-footer p {
-            margin: 0 0 10px
+            margin: 0 0 10px;
+        }
+
+        .site-footer .social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .site-footer .social a {
@@ -407,7 +478,6 @@ x<!DOCTYPE html>
             justify-content: center;
             width: 42px;
             height: 42px;
-            margin: 0 8px;
             border-radius: 50%;
             border: 1px solid var(--line);
             background: var(--glass);
@@ -423,13 +493,136 @@ x<!DOCTYPE html>
             color: #0b0a19;
         }
 
-        
-
         .site-footer svg {
             width: 20px;
             height: 20px;
             display: block;
-            fill: currentColor
+            fill: currentColor;
+        }
+
+        @media (max-width: 640px) {
+            .nav-inner {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px 14px;
+            }
+
+            .brand {
+                justify-content: center;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .menu {
+                justify-content: center;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .menu a {
+                flex: 1 1 calc(50% - 8px);
+                text-align: center;
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .cta {
+                padding: 10px 12px;
+            }
+
+            .wrap {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: clamp(28px, 10vw, 42px);
+                margin-top: 18px;
+            }
+
+            .chips {
+                gap: 8px;
+            }
+
+            .chip {
+                font-size: 14px;
+                padding: 8px 11px;
+            }
+
+            .meta {
+                padding: 12px;
+            }
+
+            .title {
+                font-size: 17px;
+            }
+
+            .links {
+                gap: 8px;
+            }
+
+            .links a {
+                font-size: 14px;
+            }
+
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-card {
+                max-height: 92vh;
+                border-radius: 14px;
+            }
+
+            .modal-header {
+                padding: 10px 12px;
+            }
+
+            .modal-header h3 {
+                font-size: 16px;
+            }
+
+            .car-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .car-btn.prev {
+                left: 8px;
+            }
+
+            .car-btn.next {
+                right: 8px;
+            }
+
+            .modal-body {
+                padding: 12px;
+                font-size: 15px;
+            }
+
+            .site-footer {
+                margin-top: 26px;
+                padding: 22px 14px;
+            }
+
+            .site-footer .social a {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .card,
+            .chip,
+            .menu a,
+            .links a,
+            .site-footer .social a {
+                transition: none !important;
+            }
         }
     </style>
 </head>
@@ -438,34 +631,36 @@ x<!DOCTYPE html>
     <div class="bg"></div>
     <div class="noise"></div>
 
-    <div class="nav">
+    <header class="nav">
         <div class="nav-inner">
-            <a class="brand" href="index.html"><span class="logo"></span> Stylianos Panagiotou</a>
+            <a class="brand" href="index.html">
+                <span class="logo"></span>
+                <span>Stylianos Panagiotou</span>
+            </a>
+
             <nav class="menu" aria-label="Main">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
                 <a href="portfolio.html">Portfolio</a>
+                <a href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
             </nav>
         </div>
-    </div>
+    </header>
 
     <main class="wrap">
         <h1><span class="gradient">Projects</span></h1>
         <p class="sub">A few highlights from coursework and personal work.</p>
 
         <div class="chips" id="chips">
-            <button class="chip active" data-filter="all">All</button>
-            <button class="chip" data-filter="mobile">Mobile</button>
-            <button class="chip" data-filter="web">Web</button>
-            <button class="chip" data-filter="games">Games</button>
+            <button class="chip active" type="button" data-filter="all">All</button>
+            <button class="chip" type="button" data-filter="mobile">Mobile</button>
+            <button class="chip" type="button" data-filter="web">Web</button>
+            <button class="chip" type="button" data-filter="games">Games</button>
         </div>
 
         <section class="grid" id="grid">
-            <!-- TravelGuideApp -->
             <article class="card" data-category="mobile" tabindex="0" aria-label="TravelGuideApp project card">
-                <img class="thumb" src="TripHUNTER.png"
-                    alt="TravelGuideApp mockup screenshot" loading="lazy" />
+                <img class="thumb" src="TripHUNTER.png" alt="TravelGuideApp mockup screenshot" loading="lazy" />
                 <div class="meta">
                     <div>
                         <div class="title">TravelGuideApp</div>
@@ -474,45 +669,42 @@ x<!DOCTYPE html>
                             view maps, and mark visited places with photos and orientation filters.
                         </p>
 
-                        <!-- Tags -->
                         <div class="tags">
                             <span class="tag">Java</span>
                             <span class="tag">Android Studio</span>
                             <span class="tag">Google Maps API</span>
                         </div>
 
-                        <!-- Links -->
                         <div class="links">
                             <a href="https://github.com/lne2003/TravelGuideApp" target="_blank"
                                 rel="noopener">GitHub</a>
 
-                            <!-- High-level details -->
-                           <a href="#" class="openModal"
-                              data-title="TravelGuideApp"
-                              data-images="images/travelguideapp/trip1.png, images/travelguideapp/trip2.png, images/travelguideapp/trip3.png, images/travelguideapp/trip4.png, images/travelguideapp/trip5.png, images/travelguideapp/trip6.png, images/travelguideapp/trip7.png, images/travelguideapp/trip8.png, images/travelguideapp/trip9.png, images/travelguideapp/trip10.png, images/travelguideapp/trip11.png, images/travelguideapp/trip12.png, images/travelguideapp/trip13.png, images/travelguideapp/trip14.png, images/travelguideapp/trip15.png, images/travelguideapp/trip16.png, images/travelguideapp/trip17.png, images/travelguideapp/trip18.png"
-                              data-desc="October–December 2024. Built with Java in Android Studio. Integrated Google Maps, location services, and photo markers with orientation filtering.">
-                              Details
+                            <a href="#" class="openModal"
+                                data-title="TravelGuideApp"
+                                data-images="images/travelguideapp/trip1.png,images/travelguideapp/trip2.png,images/travelguideapp/trip3.png,images/travelguideapp/trip4.png,images/travelguideapp/trip5.png,images/travelguideapp/trip6.png,images/travelguideapp/trip7.png,images/travelguideapp/trip8.png,images/travelguideapp/trip9.png,images/travelguideapp/trip10.png,images/travelguideapp/trip11.png,images/travelguideapp/trip12.png,images/travelguideapp/trip13.png,images/travelguideapp/trip14.png,images/travelguideapp/trip15.png,images/travelguideapp/trip16.png,images/travelguideapp/trip17.png,images/travelguideapp/trip18.png"
+                                data-desc="October–December 2024. Built with Java in Android Studio. Integrated Google Maps, location services, and photo markers with orientation filtering.">
+                                Details
                             </a>
 
+                            <a href="#" class="openModal"
+                                data-title="TravelGuideApp — Technical Details"
+                                data-img="https://picsum.photos/seed/travelguide/1200/675"
+                                data-desc="Tech Stack:
+• Java + Android Studio
+• Firebase Firestore (data storage)
+• Google Maps API (location & navigation)
+• Device sensors (orientation, GPS)
+• Local storage (for photo/marker persistence)
 
-                            <!-- Technical details -->
-                            <a href="#" class="openModal" data-title="TravelGuideApp — Technical Details"
-                                data-img="https://picsum.photos/seed/travelguide/1200/675" data-desc="Tech Stack:
-           • Java + Android Studio
-           • Firebase Firestore (data storage)
-           • Google Maps API (location & navigation)
-           • Device sensors (orientation, GPS)
-           • Local storage (for photo/marker persistence)
+Architecture:
+• MVC (Model-View-Controller) structure
+• Activities for photos, maps, and orientation filters
+• Firestore integration for real-time sync
 
-           Architecture:
-           • MVC (Model-View-Controller) structure
-           • Activities for photos, maps, and orientation filters
-           • Firestore integration for real-time sync
-
-           Key Challenges:
-           • Efficient offline caching
-           • Synchronizing map markers with device orientation
-           • Ensuring smooth UI across different screen sizes.">
+Key Challenges:
+• Efficient offline caching
+• Synchronizing map markers with device orientation
+• Ensuring smooth UI across different screen sizes.">
                                 Technical Details
                             </a>
                         </div>
@@ -520,21 +712,16 @@ x<!DOCTYPE html>
                 </div>
             </article>
 
-
-            <!-- RescueLine Web Application -->
             <article class="card" data-category="web" tabindex="0" aria-label="RescueLine project card">
-                <img class="thumb" src="Rescueline_sc copyb.png" alt="RescueLine web app UI"
-                    loading="lazy" />
+                <img class="thumb" src="Rescueline_sc copyb.png" alt="RescueLine web app UI" loading="lazy" />
                 <div class="meta">
                     <div>
                         <div class="title">RescueLine Web Application</div>
                         <p class="desc">
                             A web app for RescueLine (Cyprus roadside assistance) that enables customers to request help
-                            online
-                            with live location, reducing call center workload and errors.
+                            online with live location, reducing call center workload and errors.
                         </p>
 
-                        <!-- Tags -->
                         <div class="tags">
                             <span class="tag">PHP</span>
                             <span class="tag">CSS</span>
@@ -542,36 +729,34 @@ x<!DOCTYPE html>
                             <span class="tag">MySQL</span>
                         </div>
 
-                        <!-- Links -->
                         <div class="links">
                             <a href="https://github.com/CS-UCY-EPL343/epl343.winter23.team3" target="_blank"
                                 rel="noopener">GitHub</a>
 
-                            <!-- High-level details -->
-                           <a href="#" class="openModal"
-  data-title="RescueLine Web Application"
-  data-images="images/rescue_signup.png,images/rescue_login.png,images/rescue_problem.png,images/rescue_coordinates.png,images/rescue_ontheway.png"
-  data-desc="October–December 2023. Web app for requesting roadside assistance with live location.">
-  Details
-</a>
+                            <a href="#" class="openModal"
+                                data-title="RescueLine Web Application"
+                                data-images="images/rescue_signup.png,images/rescue_login.png,images/rescue_problem.png,images/rescue_coordinates.png,images/rescue_ontheway.png"
+                                data-desc="October–December 2023. Web app for requesting roadside assistance with live location.">
+                                Details
+                            </a>
 
+                            <a href="#" class="openModal"
+                                data-title="RescueLine — Technical Details"
+                                data-img="https://picsum.photos/seed/rescue/1200/675"
+                                data-desc="Tech Stack:
+• PHP + MySQL backend
+• HTML, CSS, JavaScript frontend
+• Live location tracking integration
 
-                            <!-- Technical details -->
-                            <a href="#" class="openModal" data-title="RescueLine — Technical Details"
-                                data-img="https://picsum.photos/seed/rescue/1200/675" data-desc="Tech Stack:
-                    • PHP + MySQL backend
-                    • HTML, CSS, JavaScript frontend
-                    • Live location tracking integration
+Architecture:
+• Role-based access for customers and employees
+• Automated request assignment system
+• Reduced dependency on manual call centers
 
-                    Architecture:
-                    • Role-based access for customers and employees
-                    • Automated request assignment system
-                    • Reduced dependency on manual call centers
-
-                    Key Features & Challenges:
-                    • Real-time service requests with GPS location
-                    • Avoiding duplicate driver dispatches
-                    • Improving customer experience through automation">
+Key Features & Challenges:
+• Real-time service requests with GPS location
+• Avoiding duplicate driver dispatches
+• Improving customer experience through automation">
                                 Technical Details
                             </a>
                         </div>
@@ -579,10 +764,8 @@ x<!DOCTYPE html>
                 </div>
             </article>
 
-            <!-- Jewellery Web Application -->
             <article class="card" data-category="web" tabindex="0" aria-label="Jewellery Web App project card">
-                <img class="thumb" src="jewellery.jpg" alt="Jewellery web app UI"
-                    loading="lazy" />
+                <img class="thumb" src="jewellery.jpg" alt="Jewellery web app UI" loading="lazy" />
                 <div class="meta">
                     <div>
                         <div class="title">Jewellery Web Application</div>
@@ -591,7 +774,6 @@ x<!DOCTYPE html>
                             product listings, wishlist, and repeat orders.
                         </p>
 
-                        <!-- Tags -->
                         <div class="tags">
                             <span class="tag">Next.js</span>
                             <span class="tag">JavaScript</span>
@@ -600,36 +782,34 @@ x<!DOCTYPE html>
                             <span class="tag">Tailwind</span>
                         </div>
 
-                        <!-- Links -->
                         <div class="links">
                             <a href="https://github.com/ctheoc05/WebProject" target="_blank" rel="noopener">GitHub</a>
 
-                            <!-- High-level details -->
-                          <a href="#" class="openModal"
-  data-title="Jewellery Web Application"
-  data-images="images/jewellery_1.png,images/jewellery_2.png"
-  data-desc="July–August 2024. E-commerce app built with Next.js with authentication, wishlist, and orders.">
-  Details
-</a>
+                            <a href="#" class="openModal"
+                                data-title="Jewellery Web Application"
+                                data-images="images/jewellery_1.png,images/jewellery_2.png"
+                                data-desc="July–August 2024. E-commerce app built with Next.js with authentication, wishlist, and orders.">
+                                Details
+                            </a>
 
+                            <a href="#" class="openModal"
+                                data-title="Jewellery Web Application — Technical Details"
+                                data-img="https://picsum.photos/seed/jewellery/1200/675"
+                                data-desc="Tech Stack:
+• Next.js (React framework)
+• TailwindCSS + vanilla CSS
+• Prisma ORM + PostgreSQL
+• Node.js backend APIs
 
-                            <!-- Technical details -->
-                            <a href="#" class="openModal" data-title="Jewellery Web Application — Technical Details"
-                                data-img="https://picsum.photos/seed/jewellery/1200/675" data-desc="Tech Stack:
-                    • Next.js (React framework)
-                    • TailwindCSS + vanilla CSS
-                    • Prisma ORM + PostgreSQL
-                    • Node.js backend APIs
+Architecture:
+• Full-stack Next.js app (pages & API routes)
+• Prisma ORM for DB schema & queries
+• Deployed on Vercel for production
 
-                    Architecture:
-                    • Full-stack Next.js app (pages & API routes)
-                    • Prisma ORM for DB schema & queries
-                    • Deployed on Vercel for production
-
-                    Key Features & Challenges:
-                    • Wishlist persistence after changing user keys
-                    • Repeat order functionality
-                    • Optimized product images & fast navigation">
+Key Features & Challenges:
+• Wishlist persistence after changing user keys
+• Repeat order functionality
+• Optimized product images & fast navigation">
                                 Technical Details
                             </a>
                         </div>
@@ -637,37 +817,38 @@ x<!DOCTYPE html>
                 </div>
             </article>
 
-            <!-- Weather Dashboard -->
-<article class="card" data-category="web" tabindex="0" aria-label="Weather Dashboard project card">
-  <img class="thumb" src="weather-dashboard.png" alt="Weather Dashboard screenshot" loading="lazy" />
-  <div class="meta">
-    <div>
-      <div class="title">Weather Dashboard</div>
-      <p class="desc">
-        A responsive weather dashboard that fetches real time data from an API and displays current conditions for searched cities.
-      </p>
+            <article class="card" data-category="web" tabindex="0" aria-label="Weather Dashboard project card">
+                <img class="thumb" src="weather-dashboard.png" alt="Weather Dashboard screenshot" loading="lazy" />
+                <div class="meta">
+                    <div>
+                        <div class="title">Weather Dashboard</div>
+                        <p class="desc">
+                            A responsive weather dashboard that fetches real time data from an API and displays current
+                            conditions for searched cities.
+                        </p>
 
-      <div class="tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">REST API</span>
-      </div>
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">REST API</span>
+                        </div>
 
-      <div class="links">
-        <a href="https://students.cs.ucy.ac.cy/~spanay02/epl425/?units=metric" target="_blank" rel="noopener">Website</a>
+                        <div class="links">
+                            <a href="https://students.cs.ucy.ac.cy/~spanay02/epl425/?units=metric" target="_blank"
+                                rel="noopener">Website</a>
 
-        <a href="#" class="openModal"
-          data-title="Weather Dashboard"
-          data-img="images/weather/weather1.png,images/weather/weather2.png,images/weather/weather3.png,images/weather/weather4.png,images/weather/weather5.png,images/weather/weather6.png,images/weather/weather7.png,images/weather/weather8.png,images/weather/weather9.png,images/weather/weather10.png"
-          data-desc="Built with HTML, CSS, and JavaScript. Uses a weather API to fetch live data based on user search and updates the UI dynamically. Focused on clean UI, responsive layout, and clear presentation of weather details.">
-          Details
-        </a>
+                            <a href="#" class="openModal"
+                                data-title="Weather Dashboard"
+                                data-images="images/weather/weather1.png,images/weather/weather2.png,images/weather/weather3.png,images/weather/weather4.png,images/weather/weather5.png,images/weather/weather6.png,images/weather/weather7.png,images/weather/weather8.png,images/weather/weather9.png,images/weather/weather10.png"
+                                data-desc="Built with HTML, CSS, and JavaScript. Uses a weather API to fetch live data based on user search and updates the UI dynamically. Focused on clean UI, responsive layout, and clear presentation of weather details.">
+                                Details
+                            </a>
 
-        <a href="#" class="openModal"
-          data-title="Weather Dashboard — Technical Details"
-          data-img="weather-dashboard.png"
-          data-desc="Tech Stack:
+                            <a href="#" class="openModal"
+                                data-title="Weather Dashboard — Technical Details"
+                                data-img="weather-dashboard.png"
+                                data-desc="Tech Stack:
 • HTML + CSS (responsive layout)
 • JavaScript (DOM updates, async requests)
 • REST API integration (fetch, JSON parsing)
@@ -676,43 +857,44 @@ Key Features:
 • City search and live weather results
 • Dynamic UI updates based on API response
 • Basic error handling for invalid inputs">
-          Technical Details
-        </a>
-      </div>
-    </div>
-  </div>
-</article>
+                                Technical Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-<!-- Unity 3D FPS -->
-<article class="card" data-category="games" tabindex="0" aria-label="Unity 3D FPS project card">
-  <img class="thumb" src="unity-fps.png" alt="Unity 3D FPS screenshot" loading="lazy" />
-  <div class="meta">
-    <div>
-      <div class="title">Unity 3D | First Person Shooter Tutorial Series</div>
-      <p class="desc">
-        A Unity 3D first person shooter project built during a guided tutorial series, focusing on core FPS mechanics and gameplay systems.
-      </p>
+            <article class="card" data-category="games" tabindex="0" aria-label="Unity 3D FPS project card">
+                <img class="thumb" src="unity-fps.png" alt="Unity 3D FPS screenshot" loading="lazy" />
+                <div class="meta">
+                    <div>
+                        <div class="title">Unity 3D | First Person Shooter Tutorial Series</div>
+                        <p class="desc">
+                            A Unity 3D first person shooter project built during a guided tutorial series, focusing on
+                            core FPS mechanics and gameplay systems.
+                        </p>
 
-      <div class="tags">
-        <span class="tag">Unity 3D</span>
-        <span class="tag">C#</span>
-        <span class="tag">Game Development</span>
-      </div>
+                        <div class="tags">
+                            <span class="tag">Unity 3D</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Game Development</span>
+                        </div>
 
-      <div class="links">
-        <a href="https://github.com/spanayi02/EPL426_Project" target="_blank" rel="noopener">GitHub</a>
+                        <div class="links">
+                            <a href="https://github.com/spanayi02/EPL426_Project" target="_blank"
+                                rel="noopener">GitHub</a>
 
-        <a href="#" class="openModal"
-          data-title="Unity 3D FPS"
-          data-img="unity-fps.png"
-          data-desc="Unity 3D first person shooter project built as part of a structured tutorial series. Implemented core gameplay features such as player movement, shooting mechanics, health, and basic enemy behavior.">
-          Details
-        </a>
+                            <a href="#" class="openModal"
+                                data-title="Unity 3D FPS"
+                                data-img="unity-fps.png"
+                                data-desc="Unity 3D first person shooter project built as part of a structured tutorial series. Implemented core gameplay features such as player movement, shooting mechanics, health, and basic enemy behavior.">
+                                Details
+                            </a>
 
-        <a href="#" class="openModal"
-          data-title="Unity 3D FPS — Technical Details"
-          data-img="unity-fps.png"
-          data-desc="Tech Stack:
+                            <a href="#" class="openModal"
+                                data-title="Unity 3D FPS — Technical Details"
+                                data-img="unity-fps.png"
+                                data-desc="Tech Stack:
 • Unity 3D + C#
 • First person controller and camera
 • Shooting and interaction mechanics
@@ -722,29 +904,29 @@ Gameplay Systems:
 • Weapon shooting logic
 • Health and damage handling
 • Basic enemy behavior and spawning">
-          Technical Details
-        </a>
-      </div>
-    </div>
-  </div>
-</article>
-
+                                Technical Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </section>
     </main>
 
-    <!-- Modal -->
     <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="modal-card">
             <div class="modal-header">
                 <h3 id="modalTitle">Project</h3>
                 <button class="close" id="closeModal" aria-label="Close details">Close</button>
             </div>
+
             <div class="carousel">
-  <button class="car-btn prev" id="prevImg" aria-label="Previous image">‹</button>
-  <img id="modalImg" src="" alt="" />
-  <button class="car-btn next" id="nextImg" aria-label="Next image">›</button>
-</div>
-<div class="dots" id="dots"></div>
+                <button class="car-btn prev" id="prevImg" aria-label="Previous image">‹</button>
+                <img id="modalImg" src="" alt="" />
+                <button class="car-btn next" id="nextImg" aria-label="Next image">›</button>
+            </div>
+
+            <div class="dots" id="dots"></div>
 
             <div class="modal-body">
                 <p id="modalDesc"></p>
@@ -752,11 +934,9 @@ Gameplay Systems:
         </div>
     </div>
 
-    <!-- New Footer with icons -->
     <footer class="site-footer">
         <p>© <span id="y"></span> <strong>Stylianos Panagiotou</strong></p>
         <div class="social">
-            <!-- LinkedIn -->
             <a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank" rel="noopener"
                 aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -764,14 +944,14 @@ Gameplay Systems:
                         d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.9h.05c.53-.95 1.82-1.94 3.75-1.94 4.01 0 4.75 2.64 4.75 6.07V21h-4v-4.93c0-1.18-.02-2.69-1.64-2.69-1.64 0-1.89 1.28-1.89 2.61V21H9z" />
                 </svg>
             </a>
-            <!-- GitHub -->
+
             <a href="https://github.com/spanayi02" target="_blank" rel="noopener" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
                         d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.41-4.04-1.41-.55-1.41-1.34-1.79-1.34-1.79-1.1-.76.08-.75.08-.75 1.21.08 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.69.25 2.94.12 3.25.78.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.64-5.49 5.95.43.37.81 1.1.81 2.23v3.3c0 .32.21.7.83.58A12 12 0 0 0 12 .5z" />
                 </svg>
             </a>
-            <!-- Email -->
+
             <a href="mailto:spanay02@gmail.com" aria-label="Email">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -784,121 +964,157 @@ Gameplay Systems:
     <script>
         document.getElementById('y').textContent = new Date().getFullYear();
 
-        // Filter
         const chips = [...document.querySelectorAll('.chip')];
         const cards = [...document.querySelectorAll('[data-category]')];
-        chips.forEach(ch => ch.addEventListener('click', () => {
-            chips.forEach(c => c.classList.remove('active')); ch.classList.add('active');
-            const f = ch.dataset.filter; cards.forEach(card => { card.style.display = (f === 'all' || card.dataset.category === f) ? 'flex' : 'none'; });
-        }));
 
-        // Modal
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+
+                const filter = chip.dataset.filter;
+
+                cards.forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'flex' : 'none';
+                });
+            });
+        });
+
         const modal = document.getElementById('modal');
+        const modalCard = modal.querySelector('.modal-card');
         const mTitle = document.getElementById('modalTitle');
         const mImg = document.getElementById('modalImg');
         const mDesc = document.getElementById('modalDesc');
         const closeBtn = document.getElementById('closeModal');
-        
-        function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); }
         const prevBtn = document.getElementById('prevImg');
-const nextBtn = document.getElementById('nextImg');
-const dotsWrap = document.getElementById('dots');
+        const nextBtn = document.getElementById('nextImg');
+        const dotsWrap = document.getElementById('dots');
 
-let currentImages = [];
-let currentIndex = 0;
+        let currentImages = [];
+        let currentIndex = 0;
+        let lastFocusedElement = null;
 
-function renderDots() {
-  dotsWrap.innerHTML = '';
-  currentImages.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === currentIndex ? ' active' : '');
-    d.type = 'button';
-    d.addEventListener('click', () => showImage(i));
-    dotsWrap.appendChild(d);
-  });
-}
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            currentImages = [];
+            currentIndex = 0;
 
-function showImage(i) {
-  if (!currentImages.length) return;
-  currentIndex = (i + currentImages.length) % currentImages.length;
-  mImg.src = currentImages[currentIndex];
-  renderDots();
-}
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+            }
+        }
 
-function openModal(title, images, desc) {
-  mTitle.textContent = title;
-  mDesc.innerText = desc || '';
+        function renderDots() {
+            dotsWrap.innerHTML = '';
 
-  currentImages = images && images.length ? images : [];
-  currentIndex = 0;
+            currentImages.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'dot' + (i === currentIndex ? ' active' : '');
+                dot.type = 'button';
+                dot.setAttribute('aria-label', `Go to image ${i + 1}`);
+                dot.addEventListener('click', () => showImage(i));
+                dotsWrap.appendChild(dot);
+            });
+        }
 
-  if (currentImages.length) {
-    mImg.src = currentImages[0];
-  } else {
-    mImg.src = '';
-  }
+        function showImage(i) {
+            if (!currentImages.length) return;
 
-  const many = currentImages.length > 1;
-  prevBtn.style.display = many ? 'grid' : 'none';
-  nextBtn.style.display = many ? 'grid' : 'none';
-  dotsWrap.style.display = many ? 'flex' : 'none';
+            currentIndex = (i + currentImages.length) % currentImages.length;
+            mImg.src = currentImages[currentIndex];
+            mImg.alt = `${mTitle.textContent} screenshot ${currentIndex + 1}`;
+            renderDots();
+        }
 
-  renderDots();
+        function openModal(title, images, desc, triggerEl) {
+            lastFocusedElement = triggerEl || document.activeElement;
 
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
-  closeBtn.focus();
-}
-        prevBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); showImage(currentIndex - 1); });
-nextBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); showImage(currentIndex + 1); });
+            mTitle.textContent = title;
+            mDesc.textContent = desc || '';
 
-document.querySelectorAll('.openModal').forEach(a =>
-  a.addEventListener('click', e => {
-    e.preventDefault();
+            currentImages = images && images.length ? images : [];
+            currentIndex = 0;
 
-    const title = a.dataset.title;
-    const desc = a.dataset.desc;
+            if (currentImages.length) {
+                mImg.src = currentImages[0];
+                mImg.alt = `${title} screenshot 1`;
+            } else {
+                mImg.src = '';
+                mImg.alt = '';
+            }
 
-    let images = [];
-    if (a.dataset.images) {
-      images = a.dataset.images.split(',').map(s => s.trim()).filter(Boolean);
-    } else if (a.dataset.img) {
-      images = [a.dataset.img];
-    }
+            const many = currentImages.length > 1;
+            prevBtn.style.display = many ? 'grid' : 'none';
+            nextBtn.style.display = many ? 'grid' : 'none';
+            dotsWrap.style.display = many ? 'flex' : 'none';
 
-    openModal(title, images, desc);
-  })
-);
+            renderDots();
+
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            closeBtn.focus();
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        });
+
+        document.querySelectorAll('.openModal').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+
+                const title = link.dataset.title;
+                const desc = link.dataset.desc;
+
+                let images = [];
+                if (link.dataset.images) {
+                    images = link.dataset.images.split(',').map(s => s.trim()).filter(Boolean);
+                } else if (link.dataset.img) {
+                    images = [link.dataset.img.trim()];
+                }
+
+                openModal(title, images, desc, link);
+            });
+        });
 
         closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-     window.addEventListener('keydown', e => {
-  if (!modal.classList.contains('open')) return;
 
-  if (e.key === 'Escape') closeModal();
-  if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-  if (e.key === 'ArrowRight') showImage(currentIndex + 1);
-});
+        modal.addEventListener('click', e => {
+            if (e.target === modal) closeModal();
+        });
 
-        // Make entire project cards clickable (open Details)
-document.querySelectorAll('.card').forEach(card => {
-    const detailsLink = card.querySelector('.openModal'); // first "Details" link
+        window.addEventListener('keydown', e => {
+            if (!modal.classList.contains('open')) return;
 
-    card.addEventListener('click', (e) => {
-        // Do not interfere with clicks on links or buttons
-        if (e.target.closest('a, button')) return;
-        if (detailsLink) detailsLink.click();
-    });
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+            if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+        });
 
-    card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            if (detailsLink) detailsLink.click();
-        }
-    });
-});
+        document.querySelectorAll('.card').forEach(card => {
+            const detailsLink = card.querySelector('.openModal');
 
-        
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a, button')) return;
+                if (detailsLink) detailsLink.click();
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (detailsLink) detailsLink.click();
+                }
+            });
+        });
     </script>
 </body>
 
