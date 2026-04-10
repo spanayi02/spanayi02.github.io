@@ -13,7 +13,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png?v=3">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png?v=3">
   <link rel="manifest" href="favicon_io/site.webmanifest?v=3">
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 
+  <meta property="og:title" content="Stylianos Panagiotou — Portfolio" />
+  <meta property="og:description" content="CS Graduate from Cyprus. Building software with Java, JavaScript, Next.js and more." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
   <meta name="color-scheme" content="dark light" />
 
   <style>
@@ -39,6 +44,24 @@
         --line: rgba(20, 20, 40, .12);
         --card: #ffffff;
       }
+    }
+
+    [data-theme="light"] {
+      --bg: #fbfaff;
+      --fg: #0b0a19;
+      --muted: #5b6170;
+      --glass: rgba(10, 10, 30, .06);
+      --line: rgba(20, 20, 40, .12);
+      --card: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b0a19;
+      --fg: #eef2ff;
+      --muted: #b9c0d4;
+      --glass: rgba(255, 255, 255, .06);
+      --line: rgba(255, 255, 255, .12);
+      --card: #0f0e24;
     }
 
     *,
@@ -500,6 +523,81 @@
       }
     }
 
+    .menu a[aria-current="page"] {
+      background: var(--glass);
+      color: var(--fg);
+    }
+
+    .theme-toggle {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      color: var(--fg);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: .2s ease;
+      flex-shrink: 0;
+      font-size: 17px;
+      font: inherit;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(139, 92, 246, .18);
+    }
+
+    .stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      border-top: 1px solid var(--line);
+      padding-top: 32px;
+    }
+
+    .stat-item {
+      flex: 1 1 120px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .stat-n {
+      display: block;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--violet), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+
+    .stat-l {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
     .site-footer {
       margin-top: 60px;
       padding: 28px 16px;
@@ -696,6 +794,12 @@
         animation: none !important;
       }
 
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
       html {
         scroll-behavior: auto;
       }
@@ -719,17 +823,18 @@
       </a>
 
       <nav class="menu" aria-label="Main">
-        <a href="index.html">Home</a>
+        <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">🌙</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <div class="hero-copy">
+      <div class="hero-copy reveal">
         <div class="kicker">Software Developer · CS Graduate</div>
         <h1><span class="gradient-text">Stylianos Panagiotou</span></h1>
 
@@ -743,7 +848,7 @@
           <a class="btn" href="mailto:spanay02@gmail.com">Contact</a>
         </div>
 
-        <div class="marquee" aria-hidden="true">
+        <div class="marquee reveal" aria-hidden="true">
           <div class="track">
             <span class="pill">C</span>
             <span class="pill">C++</span>
@@ -839,6 +944,13 @@
         </div>
       </div>
     </section>
+
+    <section class="stats reveal" aria-label="Quick stats">
+      <div class="stat-item"><span class="stat-n">3</span><span class="stat-l">Internships</span></div>
+      <div class="stat-item"><span class="stat-n">5+</span><span class="stat-l">Projects</span></div>
+      <div class="stat-item"><span class="stat-n">7+</span><span class="stat-l">Technologies</span></div>
+      <div class="stat-item"><span class="stat-n">4</span><span class="stat-l">Years at UCY</span></div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -921,6 +1033,45 @@
     }
 
     type();
+
+    // Theme toggle
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const saved = localStorage.getItem('theme');
+      let current = saved || (sys ? 'dark' : 'light');
+      if (!saved) root.setAttribute('data-theme', current);
+
+      function apply(t) {
+        current = t;
+        root.setAttribute('data-theme', t);
+        btn.textContent = t === 'dark' ? '🌙' : '☀️';
+        btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+
+      apply(current);
+      btn.addEventListener('click', function () {
+        const next = current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        apply(next);
+      });
+    })();
+
+    // Scroll-reveal
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
   </script>
 </body>
 

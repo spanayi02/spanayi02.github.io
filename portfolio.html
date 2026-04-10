@@ -12,7 +12,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png?v=3">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png?v=3">
     <link rel="manifest" href="favicon_io/site.webmanifest?v=3">
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 
+    <meta property="og:title" content="Projects — Stylianos Panagiotou" />
+    <meta property="og:description" content="Selected projects: TravelGuideApp, RescueLine, Jewellery Web App, Weather Dashboard, Unity FPS." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
     <meta name="color-scheme" content="dark light" />
 
     <style>
@@ -38,6 +43,24 @@
                 --line: rgba(20, 20, 40, .12);
                 --card: #ffffff;
             }
+        }
+
+        [data-theme="light"] {
+            --bg: #fbfaff;
+            --fg: #0b0a19;
+            --muted: #5b6170;
+            --glass: rgba(10, 10, 30, .06);
+            --line: rgba(20, 20, 40, .12);
+            --card: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0b0a19;
+            --fg: #eef2ff;
+            --muted: #b9c0d4;
+            --glass: rgba(255, 255, 255, .06);
+            --line: rgba(255, 255, 255, .12);
+            --card: #0f0e24;
         }
 
         *,
@@ -450,6 +473,42 @@
             overflow-wrap: anywhere;
         }
 
+        .menu a[aria-current="page"] {
+            background: var(--glass);
+            color: var(--fg);
+        }
+
+        .theme-toggle {
+            background: var(--glass);
+            border: 1px solid var(--line);
+            color: var(--fg);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: .2s ease;
+            flex-shrink: 0;
+            font-size: 17px;
+            font: inherit;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(139, 92, 246, .18);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
         .site-footer {
             margin-top: 34px;
             padding: 28px 16px;
@@ -612,6 +671,12 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
             html {
                 scroll-behavior: auto;
             }
@@ -641,8 +706,9 @@
             <nav class="menu" aria-label="Main">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="portfolio.html">Portfolio</a>
+                <a href="portfolio.html" aria-current="page">Portfolio</a>
                 <a href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">🌙</button>
             </nav>
         </div>
     </header>
@@ -658,7 +724,7 @@
             <button class="chip" type="button" data-filter="games">Games</button>
         </div>
 
-        <section class="grid" id="grid">
+        <section class="grid reveal" id="grid">
             <article class="card" data-category="mobile" tabindex="0" aria-label="TravelGuideApp project card">
                 <img class="thumb" src="TripHUNTER.png" alt="TravelGuideApp mockup screenshot" loading="lazy" />
                 <div class="meta">
@@ -963,6 +1029,45 @@ Gameplay Systems:
 
     <script>
         document.getElementById('y').textContent = new Date().getFullYear();
+
+        // Theme toggle
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('themeToggle');
+            var sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var saved = localStorage.getItem('theme');
+            var current = saved || (sys ? 'dark' : 'light');
+            if (!saved) root.setAttribute('data-theme', current);
+
+            function apply(t) {
+                current = t;
+                root.setAttribute('data-theme', t);
+                btn.textContent = t === 'dark' ? '🌙' : '☀️';
+                btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+            }
+
+            apply(current);
+            btn.addEventListener('click', function () {
+                var next = current === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', next);
+                apply(next);
+            });
+        })();
+
+        // Scroll-reveal
+        (function () {
+            var els = document.querySelectorAll('.reveal');
+            if (!els.length) return;
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            els.forEach(function (el) { obs.observe(el); });
+        })();
 
         const chips = [...document.querySelectorAll('.chip')];
         const cards = [...document.querySelectorAll('[data-category]')];
