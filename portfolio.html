@@ -22,45 +22,44 @@
 
     <style>
         :root {
-            --bg: #0b0a19;
-            --fg: #eef2ff;
-            --muted: #b9c0d4;
-            --glass: rgba(255, 255, 255, .06);
-            --line: rgba(255, 255, 255, .12);
-            --violet: #8b5cf6;
-            --violet-2: #a78bfa;
-            --pink: #ec4899;
+            --bg: #08090e;
+            --fg: #eaecf4;
+            --muted: #7c8099;
+            --glass: rgba(255, 255, 255, .05);
+            --line: rgba(255, 255, 255, .09);
+            --accent: #3d7eff;
+            --accent-light: #7aabff;
             --cyan: #22d3ee;
-            --card: #0f0e24;
+            --card: #0d0e18;
         }
 
         @media (prefers-color-scheme: light) {
             :root {
-                --bg: #fbfaff;
-                --fg: #0b0a19;
-                --muted: #5b6170;
-                --glass: rgba(10, 10, 30, .06);
-                --line: rgba(20, 20, 40, .12);
+                --bg: #f4f5fb;
+                --fg: #0d0e18;
+                --muted: #545870;
+                --glass: rgba(10, 10, 30, .05);
+                --line: rgba(20, 20, 40, .10);
                 --card: #ffffff;
             }
         }
 
         [data-theme="light"] {
-            --bg: #fbfaff;
-            --fg: #0b0a19;
-            --muted: #5b6170;
-            --glass: rgba(10, 10, 30, .06);
-            --line: rgba(20, 20, 40, .12);
+            --bg: #f4f5fb;
+            --fg: #0d0e18;
+            --muted: #545870;
+            --glass: rgba(10, 10, 30, .05);
+            --line: rgba(20, 20, 40, .10);
             --card: #ffffff;
         }
 
         [data-theme="dark"] {
-            --bg: #0b0a19;
-            --fg: #eef2ff;
-            --muted: #b9c0d4;
-            --glass: rgba(255, 255, 255, .06);
-            --line: rgba(255, 255, 255, .12);
-            --card: #0f0e24;
+            --bg: #08090e;
+            --fg: #eaecf4;
+            --muted: #7c8099;
+            --glass: rgba(255, 255, 255, .05);
+            --line: rgba(255, 255, 255, .09);
+            --card: #0d0e18;
         }
 
         *,
@@ -100,9 +99,8 @@
             inset: 0;
             z-index: -2;
             background:
-                radial-gradient(1200px 800px at 30% -10%, rgba(139, 92, 246, .35), transparent 60%),
-                radial-gradient(1200px 800px at 80% 120%, rgba(236, 72, 153, .25), transparent 60%),
-                radial-gradient(1000px 700px at -10% 80%, rgba(34, 211, 238, .25), transparent 60%);
+                radial-gradient(900px 600px at 15% -5%, rgba(61, 126, 255, .12), transparent 55%),
+                radial-gradient(700px 500px at 85% 105%, rgba(34, 211, 238, .07), transparent 55%);
         }
 
         .noise {
@@ -121,7 +119,7 @@
             top: 0;
             z-index: 20;
             backdrop-filter: saturate(160%) blur(8px);
-            background: linear-gradient(180deg, rgba(15, 14, 36, .65), rgba(15, 14, 36, .30));
+            background: linear-gradient(180deg, rgba(8, 9, 14,.65), rgba(8, 9, 14,.30));
             border-bottom: 1px solid var(--line);
         }
 
@@ -155,7 +153,7 @@
             height: 28px;
             border-radius: 8px;
             flex-shrink: 0;
-            background: conic-gradient(from 200deg, var(--violet), var(--pink), var(--cyan), var(--violet));
+            background: conic-gradient(from 200deg, var(--accent), var(--cyan), var(--cyan), var(--accent));
             box-shadow: 0 0 0 2px rgba(255, 255, 255, .15) inset;
         }
 
@@ -181,12 +179,12 @@
         }
 
         .cta {
-            background: linear-gradient(90deg, var(--violet), var(--pink));
+            background: var(--accent);
             color: white !important;
             font-weight: 800;
             padding: 10px 14px;
             border-radius: 999px;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, .25);
+            box-shadow: 0 8px 24px rgba(61, 126, 255, .30);
         }
 
         .wrap {
@@ -202,7 +200,7 @@
         }
 
         .gradient {
-            background: linear-gradient(90deg, var(--violet), var(--pink), var(--cyan));
+            background: linear-gradient(100deg, var(--accent-light), var(--cyan));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -235,8 +233,8 @@
         }
 
         .chip.active {
-            background: linear-gradient(90deg, var(--violet), var(--pink));
-            color: #0b0a19;
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
+            color: #fff;
             border-color: transparent;
         }
 
@@ -276,7 +274,7 @@
         }
 
         .card:focus-visible {
-            outline: 2px solid var(--violet-2);
+            outline: 2px solid var(--accent-light);
             outline-offset: 4px;
         }
 
@@ -364,7 +362,7 @@
             max-width: 920px;
             width: 100%;
             max-height: 90vh;
-            background: #100825;
+            background: #0d0e18;
             border: 1px solid var(--line);
             border-radius: 16px;
             overflow: hidden;
@@ -448,7 +446,7 @@
         }
 
         .dot.active {
-            background: linear-gradient(90deg, var(--violet), var(--pink));
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
             border-color: transparent;
         }
 
@@ -495,7 +493,7 @@
         }
 
         .theme-toggle:hover {
-            background: rgba(139, 92, 246, .18);
+            background: rgba(61, 126, 255,.18);
         }
 
         .reveal {
@@ -516,8 +514,8 @@
             color: var(--muted);
             border-top: 1px solid var(--line);
             background:
-                radial-gradient(600px 220px at 50% 0, rgba(139, 92, 246, .14), transparent 60%),
-                linear-gradient(180deg, rgba(15, 14, 36, .60), rgba(15, 14, 36, .92));
+                radial-gradient(600px 220px at 50% 0, rgba(61, 126, 255,.14), transparent 60%),
+                linear-gradient(180deg, rgba(8, 9, 14,.60), rgba(8, 9, 14,.92));
         }
 
         .site-footer p {
@@ -547,9 +545,9 @@
         .site-footer .social a:hover {
             transform: translateY(-2px);
             border-color: transparent;
-            background: linear-gradient(90deg, var(--violet), var(--pink));
-            box-shadow: 0 10px 28px rgba(139, 92, 246, .35);
-            color: #0b0a19;
+            background: linear-gradient(90deg, var(--accent), var(--cyan));
+            box-shadow: 0 10px 28px rgba(61, 126, 255,.35);
+            color: #fff;
         }
 
         .site-footer svg {
