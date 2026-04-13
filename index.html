@@ -63,6 +63,27 @@
       --card: #0d0e18;
     }
 
+    [data-theme="light"] .nav {
+      background: linear-gradient(180deg, rgba(244,245,251,.95), rgba(244,245,251,.70));
+    }
+
+    [data-theme="light"] .site-footer {
+      background:
+        radial-gradient(600px 220px at 50% 0, rgba(61,126,255,.08), transparent 60%),
+        linear-gradient(180deg, rgba(244,245,251,.85), rgba(244,245,251,.98));
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) .nav {
+        background: linear-gradient(180deg, rgba(244,245,251,.95), rgba(244,245,251,.70));
+      }
+      :root:not([data-theme="dark"]) .site-footer {
+        background:
+          radial-gradient(600px 220px at 50% 0, rgba(61,126,255,.08), transparent 60%),
+          linear-gradient(180deg, rgba(244,245,251,.85), rgba(244,245,251,.98));
+      }
+    }
+
     *,
     *::before,
     *::after {
@@ -947,7 +968,7 @@
     </section>
 
     <section class="stats reveal" aria-label="Quick stats">
-      <div class="stat-item"><span class="stat-n">3</span><span class="stat-l">Internships</span></div>
+      <div class="stat-item"><span class="stat-n">2</span><span class="stat-l">Internships</span></div>
       <div class="stat-item"><span class="stat-n">5+</span><span class="stat-l">Projects</span></div>
       <div class="stat-item"><span class="stat-n">7+</span><span class="stat-l">Technologies</span></div>
       <div class="stat-item"><span class="stat-n">4</span><span class="stat-l">Years at UCY</span></div>

@@ -62,6 +62,38 @@
             --card: #0d0e18;
         }
 
+        [data-theme="light"] .nav {
+            background: linear-gradient(180deg, rgba(244,245,251,.95), rgba(244,245,251,.70));
+        }
+
+        [data-theme="light"] .site-footer {
+            background:
+                radial-gradient(600px 220px at 50% 0, rgba(61,126,255,.08), transparent 60%),
+                linear-gradient(180deg, rgba(244,245,251,.85), rgba(244,245,251,.98));
+        }
+
+        [data-theme="light"] .car-btn {
+            background: rgba(255,255,255,.85);
+        }
+
+        [data-theme="light"] .car-btn:hover {
+            background: rgba(255,255,255,1);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root:not([data-theme="dark"]) .nav {
+                background: linear-gradient(180deg, rgba(244,245,251,.95), rgba(244,245,251,.70));
+            }
+            :root:not([data-theme="dark"]) .site-footer {
+                background:
+                    radial-gradient(600px 220px at 50% 0, rgba(61,126,255,.08), transparent 60%),
+                    linear-gradient(180deg, rgba(244,245,251,.85), rgba(244,245,251,.98));
+            }
+            :root:not([data-theme="dark"]) .car-btn {
+                background: rgba(255,255,255,.85);
+            }
+        }
+
         *,
         *::before,
         *::after {
