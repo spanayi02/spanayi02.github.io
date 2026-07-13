@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stylianos Panagiotou — Portfolio</title>
   <meta name="description"
-    content="Developer portfolio for Stylianos Panagiotou — CS Graduate in Nicosia, Cyprus." />
+    content="Portfolio for Stylianos Panagiotou — Operations Specialist at Moneygate and CS Graduate from Cyprus." />
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png?v=3">
@@ -16,7 +16,7 @@
   <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 
   <meta property="og:title" content="Stylianos Panagiotou — Portfolio" />
-  <meta property="og:description" content="CS Graduate from Cyprus. Building software with Java, JavaScript, Next.js and more." />
+  <meta property="og:description" content="Operations Specialist at Moneygate and CS Graduate from Cyprus. Projects in mobile, web, databases, and practical user-focused tools." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <meta name="color-scheme" content="dark light" />
@@ -216,7 +216,8 @@
     .menu a {
       padding: 8px 10px;
       border-radius: 10px;
-      color: var(--muted);
+      color: var(--fg);
+      opacity: .82;
       font-size: 15px;
       transition: .2s ease;
     }
@@ -224,11 +225,13 @@
     .menu a:hover {
       background: var(--glass);
       color: var(--fg);
+      opacity: 1;
     }
 
     .cta {
-      background: var(--accent);
+      background: linear-gradient(90deg, var(--accent), #2563eb);
       color: white !important;
+      opacity: 1 !important;
       font-weight: 800;
       padding: 10px 14px;
       border-radius: 999px;
@@ -542,8 +545,9 @@
     }
 
     .menu a[aria-current="page"] {
-      background: var(--glass);
+      background: rgba(61, 126, 255, .14);
       color: var(--fg);
+      opacity: 1;
     }
 
     .theme-toggle {
@@ -603,6 +607,234 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .08em;
+    }
+
+    .hero-note {
+      margin: 16px 0 0;
+      max-width: 64ch;
+      color: var(--fg);
+      font-size: 17px;
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+      max-width: 780px;
+    }
+
+    .proof-chip {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .035);
+      border-radius: 12px;
+      padding: 12px;
+      min-height: 90px;
+    }
+
+    .proof-chip strong {
+      display: block;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    .proof-chip span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin: 74px 0 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.12;
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .text-link {
+      color: var(--accent-light);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .notes-grid,
+    .project-grid,
+    .focus-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .notes-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .focus-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .project-grid {
+      grid-template-columns: 1.15fr .85fr;
+    }
+
+    .signal-card,
+    .focus-card,
+    .feature-project,
+    .mini-project,
+    .career-strip {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .025));
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .signal-card,
+    .focus-card {
+      padding: 18px;
+    }
+
+    .signal-card strong,
+    .focus-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .signal-card p,
+    .focus-card p,
+    .feature-project p,
+    .mini-project p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project-shot {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: var(--glass);
+    }
+
+    .project-body {
+      padding: 18px;
+    }
+
+    .project-body h3 {
+      margin: 0 0 8px;
+      font-size: 23px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+    }
+
+    .project-tags span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 9px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .side-projects {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mini-project {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      min-height: 170px;
+    }
+
+    .mini-project img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-right: 1px solid var(--line);
+    }
+
+    .mini-project .project-body h3 {
+      font-size: 18px;
+    }
+
+    .career-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .career-step {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .career-step:last-child {
+      border-right: 0;
+    }
+
+    .career-step span {
+      color: var(--accent-light);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .career-step strong {
+      display: block;
+      margin: 7px 0 4px;
+    }
+
+    .career-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .closing-cta {
+      margin-top: 74px;
+      padding: 30px;
+      border: 1px solid rgba(122, 171, 255, .28);
+      border-radius: 18px;
+      background:
+        radial-gradient(500px 180px at 15% 20%, rgba(61, 126, 255, .18), transparent 70%),
+        linear-gradient(135deg, rgba(61, 126, 255, .16), rgba(34, 211, 238, .08));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .closing-cta h2 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 36px);
+    }
+
+    .closing-cta p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 68ch;
     }
 
     .reveal {
@@ -750,6 +982,25 @@
         justify-content: center;
       }
 
+      .hero-note {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-proof,
+      .notes-grid,
+      .focus-grid,
+      .project-grid,
+      .career-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head,
+      .closing-cta {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
       .photo-card {
         max-width: 280px;
         margin: 10px auto 0;
@@ -813,6 +1064,41 @@
         width: 100%;
       }
 
+      .hero-proof {
+        gap: 8px;
+      }
+
+      .proof-chip {
+        min-height: auto;
+      }
+
+      .section-head {
+        margin-top: 52px;
+      }
+
+      .mini-project {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-project img {
+        aspect-ratio: 16 / 9;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .career-step {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .career-step:last-child {
+        border-bottom: 0;
+      }
+
+      .closing-cta {
+        padding: 22px;
+      }
+
       .marquee {
         margin-top: 24px;
         padding: 8px 0;
@@ -843,11 +1129,93 @@
       }
     }
 
+    /* ─── Floating orbs ─── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(110px);
+      pointer-events: none;
+      z-index: -1;
+      will-change: transform;
+    }
+    .orb1 {
+      width: min(55vw, 680px);
+      height: min(55vw, 680px);
+      background: rgba(61, 126, 255, .11);
+      top: -18%;
+      left: -12%;
+      animation: orbA 22s ease-in-out infinite alternate;
+    }
+    .orb2 {
+      width: min(44vw, 560px);
+      height: min(44vw, 560px);
+      background: rgba(34, 211, 238, .07);
+      bottom: -14%;
+      right: -10%;
+      animation: orbB 28s ease-in-out infinite alternate;
+    }
+    @keyframes orbA { to { transform: translate(9%, 14%) scale(1.08); } }
+    @keyframes orbB { to { transform: translate(-10%, -9%) scale(1.06); } }
+
+    /* ─── Dot grid ─── */
+    .dot-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, .045) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, #000 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, #000 30%, transparent 80%);
+    }
+
+    /* ─── Hero entrance stagger ─── */
+    .h-enter {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: hEnter .65s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+    @keyframes hEnter {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ─── Primary button shimmer ─── */
+    .btn.primary {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn.primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      left: -110%;
+      width: 55%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .16), transparent);
+      transform: skewX(-18deg);
+      animation: shimmer 4s ease-in-out infinite;
+      animation-delay: 1.8s;
+    }
+    @keyframes shimmer {
+      0%   { left: -110%; }
+      35%  { left: 130%; }
+      100% { left: 130%; }
+    }
+
+    /* ─── Photo card hover & tilt ─── */
+    .photo-card {
+      transition: box-shadow .25s ease;
+    }
+    .photo-card:hover {
+      box-shadow: 0 36px 90px rgba(0, 0, 0, .5), 0 0 0 1px rgba(61, 126, 255, .22);
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       .track,
       .caret,
-      .pulse {
+      .pulse,
+      .orb1,
+      .orb2 {
         animation: none !important;
       }
 
@@ -855,6 +1223,16 @@
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
+      }
+
+      .h-enter {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
+
+      .btn.primary::after {
+        display: none;
       }
 
       html {
@@ -892,17 +1270,37 @@
   <main class="container">
     <section class="hero">
       <div class="hero-copy reveal">
-        <div class="kicker">Software Developer · CS Graduate</div>
-        <h1><span class="gradient-text">Stylianos Panagiotou</span></h1>
+        <div class="kicker">Operations Specialist @ Moneygate | CS Graduate</div>
+        <h1><span class="gradient-text">Stylianos Panagiotou</span> turns ideas into clean digital tools.</h1>
 
         <p class="lead">
           <span id="type" class="type"></span><span class="caret"></span>
         </p>
 
+        <p class="hero-note">
+          I am a CS Graduate from Cyprus, currently working at Moneygate. I like practical
+          software, clear interfaces, and the kind of small details that make a tool easier to trust.
+        </p>
+
         <div class="buttons">
-          <a class="btn primary" href="about.html">About Me</a>
-          <a class="btn" href="portfolio.html">See Projects</a>
+          <a class="btn primary" href="portfolio.html">See Projects</a>
+          <a class="btn" href="about.html">About Me</a>
           <a class="btn" href="mailto:spanay02@gmail.com">Contact</a>
+        </div>
+
+        <div class="hero-proof reveal">
+          <div class="proof-chip">
+            <strong>Current</strong>
+            <span>Operations Specialist at Moneygate Solutions LTD since March 2026.</span>
+          </div>
+          <div class="proof-chip">
+            <strong>What I build</strong>
+            <span>Mobile apps, web apps, database-backed systems, REST API integrations, and clean UI flows.</span>
+          </div>
+          <div class="proof-chip">
+            <strong>Where I learned</strong>
+            <span>University of Cyprus, PwC Cyprus, Playtech BGT Sports, and real day-to-day operations work.</span>
+          </div>
         </div>
 
         <div class="marquee reveal" aria-hidden="true">
@@ -951,7 +1349,7 @@
           <img src="pic.png" alt="Stylianos Panagiotou" class="hero-photo" />
           <div class="photo-footer">
             <span class="pf-name">Stylianos Panagiotou</span>
-            <span class="pf-role">CS Graduate · Nicosia, Cyprus</span>
+            <span class="pf-role">Operations Specialist | Moneygate</span>
             <div class="pf-links">
               <a href="https://github.com/spanayi02" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.41-4.04-1.41-.55-1.41-1.34-1.79-1.34-1.79-1.1-.76.08-.75.08-.75 1.21.08 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.69.25 2.94.12 3.25.78.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.64-5.49 5.95.43.37.81 1.1.81 2.23v3.3c0 .32.21.7.83.58A12 12 0 0 0 12 .5z"/></svg>
@@ -968,10 +1366,170 @@
     </section>
 
     <section class="stats reveal" aria-label="Quick stats">
+      <div class="stat-item"><span class="stat-n">Current</span><span class="stat-l">Moneygate</span></div>
       <div class="stat-item"><span class="stat-n">2</span><span class="stat-l">Internships</span></div>
       <div class="stat-item"><span class="stat-n">5+</span><span class="stat-l">Projects</span></div>
-      <div class="stat-item"><span class="stat-n">7+</span><span class="stat-l">Technologies</span></div>
-      <div class="stat-item"><span class="stat-n">4</span><span class="stat-l">Years at UCY</span></div>
+      <div class="stat-item"><span class="stat-n">CS</span><span class="stat-l">University of Cyprus</span></div>
+    </section>
+
+    <section class="reveal" aria-labelledby="useful-title">
+      <div class="section-head">
+        <div>
+          <div class="kicker">A Little More</div>
+          <h2 id="useful-title">I like software that feels clear from the first click.</h2>
+          <p>
+            I enjoy taking an idea, understanding what the user needs from it, and shaping it into something that is
+            simple enough to use without overthinking.
+          </p>
+        </div>
+      </div>
+
+      <div class="notes-grid">
+        <article class="signal-card">
+          <strong>I like building end to end</strong>
+          <p>From UI screens to API calls and database work, I enjoy seeing how the whole piece fits together.</p>
+        </article>
+        <article class="signal-card">
+          <strong>I notice the rough edges</strong>
+          <p>Support and operations experience taught me that confusing flows become real problems for real people.</p>
+        </article>
+        <article class="signal-card">
+          <strong>I learn by doing</strong>
+          <p>Android, web, databases, Unity, design tools, support work; I do not mind starting from unfamiliar ground.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="projects-title">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Projects</div>
+          <h2 id="projects-title">A few things I have built and learned from.</h2>
+          <p>Some are coursework, some are personal work. All of them helped me get better at turning an idea into something usable.</p>
+        </div>
+        <a class="text-link" href="portfolio.html">Open full portfolio</a>
+      </div>
+
+      <div class="project-grid">
+        <article class="feature-project">
+          <img class="project-shot" src="TripHUNTER.png" alt="TravelGuideApp mockup screenshot" loading="lazy" />
+          <div class="project-body">
+            <h3>TravelGuideApp</h3>
+            <p>
+              Android travel app with maps, photo markers, visited-place tracking, Firebase storage, and orientation-aware filtering.
+            </p>
+            <div class="project-tags">
+              <span>Java</span>
+              <span>Android Studio</span>
+              <span>Google Maps API</span>
+              <span>Firebase</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="side-projects">
+          <article class="mini-project">
+            <img src="Rescueline_sc copyb.png" alt="RescueLine web app UI" loading="lazy" />
+            <div class="project-body">
+              <h3>RescueLine</h3>
+              <p>Roadside assistance web app with live location requests and role-based workflows.</p>
+              <div class="project-tags">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="mini-project">
+            <img src="images/jewellery_stock.jpg" alt="Jewellery web app UI" loading="lazy" />
+            <div class="project-body">
+              <h3>Jewellery Web App</h3>
+              <p>Full-stack commerce flow with authentication, wishlists, product listings, and repeat orders.</p>
+              <div class="project-tags">
+                <span>Next.js</span>
+                <span>Prisma</span>
+                <span>Tailwind</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="focus-title">
+      <div class="section-head">
+        <div>
+          <div class="kicker">How I Work</div>
+          <h2 id="focus-title">Simple steps, done carefully.</h2>
+        </div>
+      </div>
+
+      <div class="focus-grid">
+        <article class="focus-card">
+          <strong>Clarify</strong>
+          <p>Understand what the page, app, or feature is really meant to do.</p>
+        </article>
+        <article class="focus-card">
+          <strong>Design</strong>
+          <p>Make the important actions easy to find and hard to misunderstand.</p>
+        </article>
+        <article class="focus-card">
+          <strong>Build</strong>
+          <p>Keep the implementation readable enough that future me can still work with it.</p>
+        </article>
+        <article class="focus-card">
+          <strong>Improve</strong>
+          <p>Look for the awkward bits and make them less awkward.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reveal" aria-labelledby="career-title">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Experience</div>
+          <h2 id="career-title">Where I am learning by doing.</h2>
+        </div>
+        <a class="text-link" href="about.html">See full timeline</a>
+      </div>
+
+      <div class="career-strip">
+        <div class="career-step">
+          <span>Now</span>
+          <strong>Moneygate</strong>
+          <p>Current operations role, while also learning more about technical workflows and development in a real business environment.</p>
+        </div>
+        <div class="career-step">
+          <span>2025</span>
+          <strong>PwC Cyprus</strong>
+          <p>IT Support Intern, learning through real user issues and service requests.</p>
+        </div>
+        <div class="career-step">
+          <span>2024</span>
+          <strong>Playtech BGT Sports</strong>
+          <p>Database internship in a technical product environment.</p>
+        </div>
+        <div class="career-step">
+          <span>2021-2025</span>
+          <strong>University of Cyprus</strong>
+          <p>B.Sc. Computer Science foundation across software, data, and systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-cta reveal" aria-labelledby="cta-title">
+      <div>
+        <div class="kicker">Contact</div>
+        <h2 id="cta-title">Want to talk about a role, a project, or an idea?</h2>
+        <p>
+          Send me a message. I am always happy to meet people building useful things.
+        </p>
+      </div>
+      <div class="buttons">
+        <a class="btn primary" href="mailto:spanay02@gmail.com">Email Me</a>
+        <a class="btn" href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
     </section>
   </main>
 
@@ -1013,9 +1571,10 @@
 
     const el = document.getElementById('type');
     const words = [
-      "I enjoy building interactive apps",
-      "CS Graduate @ UCY",
-      "Exploring AI and Software Development"
+      "Operations Specialist @ Moneygate",
+      "CS Graduate @ University of Cyprus",
+      "I like clean interfaces and useful tools",
+      "Mobile, web, databases, APIs, and support"
     ];
 
     let i = 0;

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Projects — Stylianos Panagiotou</title>
-    <meta name="description" content="Selected projects: TravelGuideApp, RescueLine, Jewellery Web App." />
+    <meta name="description" content="Selected projects by Stylianos Panagiotou, including mobile, web, e-commerce, weather, and Unity work." />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png?v=3">
@@ -15,7 +15,7 @@
     <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 
     <meta property="og:title" content="Projects — Stylianos Panagiotou" />
-    <meta property="og:description" content="Selected projects: TravelGuideApp, RescueLine, Jewellery Web App, Weather Dashboard, Unity FPS." />
+    <meta property="og:description" content="Selected mobile, web, e-commerce, weather, and Unity projects by Stylianos Panagiotou." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="color-scheme" content="dark light" />
@@ -200,7 +200,8 @@
         .menu a {
             padding: 8px 10px;
             border-radius: 10px;
-            color: var(--muted);
+            color: var(--fg);
+            opacity: .82;
             font-size: 15px;
             transition: .2s ease;
         }
@@ -208,11 +209,13 @@
         .menu a:hover {
             background: var(--glass);
             color: var(--fg);
+            opacity: 1;
         }
 
         .cta {
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), #2563eb);
             color: white !important;
+            opacity: 1 !important;
             font-weight: 800;
             padding: 10px 14px;
             border-radius: 999px;
@@ -504,8 +507,9 @@
         }
 
         .menu a[aria-current="page"] {
-            background: var(--glass);
+            background: rgba(61, 126, 255, .14);
             color: var(--fg);
+            opacity: 1;
         }
 
         .theme-toggle {
@@ -745,7 +749,7 @@
 
     <main class="wrap">
         <h1><span class="gradient">Projects</span></h1>
-        <p class="sub">A few highlights from coursework and personal work.</p>
+        <p class="sub">A few projects from coursework and personal work, with the parts I found interesting enough to keep improving.</p>
 
         <div class="chips" id="chips">
             <button class="chip active" type="button" data-filter="all">All</button>
