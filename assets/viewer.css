@@ -1,0 +1,375 @@
+/* ─── Project viewer (gallery + overview / technical details) ─── */
+[hidden] {
+  display: none !important;
+}
+
+.v-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+.v-tags span {
+  font-size: .72rem;
+  padding: .3rem .65rem;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  color: var(--muted);
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0s linear .45s;
+}
+
+.viewer.open {
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
+}
+
+.v-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 11, 16, .82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  transition: opacity .35s var(--ease);
+}
+
+.viewer.open .v-backdrop {
+  opacity: 1;
+}
+
+.v-shell {
+  position: relative;
+  width: min(1280px, 100%);
+  max-height: calc(100vh - 2rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 1.75rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  box-shadow: 0 50px 120px rgba(0, 0, 0, .55);
+  opacity: 0;
+  transform: translateY(24px) scale(.98);
+  transition: opacity .4s var(--ease), transform .5s var(--ease);
+}
+
+.viewer.open .v-shell {
+  opacity: 1;
+  transform: none;
+}
+
+.v-media {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: #0f141b;
+}
+
+.v-stage {
+  position: relative;
+  flex: 1;
+  min-height: 46vh;
+  display: grid;
+  /* a fixed track, so the image's max-height (a %) fits tall phone screenshots instead of overflowing */
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.v-blur {
+  position: absolute;
+  inset: -40px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(40px) saturate(1.2);
+  opacity: .45;
+}
+
+.v-img {
+  position: relative;
+  max-width: calc(100% - 2rem);
+  max-height: calc(100% - 2rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: .9rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.v-nav {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 2;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(20, 25, 34, .7);
+  border: 1px solid rgba(255, 255, 255, .18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color .2s, scale .25s var(--ease);
+}
+
+.v-nav:hover {
+  background: var(--surface-2);
+  scale: 1.08;
+}
+
+.v-nav svg,
+.v-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.v-prev {
+  left: 1rem;
+}
+
+.v-next {
+  right: 1rem;
+}
+
+.v-count {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  padding: .35rem .75rem;
+  border-radius: 999px;
+  background: rgba(20, 25, 34, .7);
+  border: 1px solid rgba(255, 255, 255, .14);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.v-loader {
+  position: absolute;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, .15);
+  border-top-color: var(--a1);
+  animation: vspin .8s linear infinite;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.v-loader.on {
+  opacity: 1;
+}
+
+@keyframes vspin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.v-thumbs {
+  display: flex;
+  gap: .5rem;
+  padding: .75rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  border-top: 1px solid var(--stroke);
+  background: rgba(20, 25, 34, .6);
+}
+
+.v-thumbs button {
+  flex: none;
+  width: 84px;
+  height: 56px;
+  border-radius: .6rem;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: .5;
+  transition: opacity .25s, border-color .25s;
+}
+
+.v-thumbs button:hover {
+  opacity: .9;
+}
+
+.v-thumbs button.active {
+  opacity: 1;
+  border-color: var(--a1);
+}
+
+.v-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.v-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--stroke);
+  min-height: 0;
+}
+
+.v-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.v-cat {
+  font-size: .7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  margin-bottom: .4rem;
+}
+
+.v-head h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+}
+
+.v-close {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--stroke);
+  background: var(--surface-2);
+  transition: rotate .35s var(--ease), background-color .2s;
+}
+
+.v-close:hover {
+  rotate: 90deg;
+  background: var(--stroke);
+}
+
+.v-tabs {
+  display: flex;
+  gap: .25rem;
+  padding: .25rem;
+  border-radius: 999px;
+  background: rgba(20, 25, 34, .6);
+  border: 1px solid var(--stroke);
+}
+
+.v-tab {
+  flex: 1;
+  font-size: .8rem;
+  padding: .55rem .75rem;
+  border-radius: 999px;
+  color: var(--muted);
+  transition: color .25s, background-color .25s;
+}
+
+.v-tab:hover {
+  color: var(--text);
+}
+
+.v-tab.active {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.v-text {
+  white-space: pre-line;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: .92rem;
+}
+
+.v-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: auto;
+}
+
+.v-hint {
+  display: none;
+  font-size: .72rem;
+  color: rgba(163, 175, 192, .6);
+}
+
+@media (min-width: 960px) {
+  .v-shell {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    height: min(780px, calc(100vh - 3rem));
+    overflow: hidden;
+  }
+
+  .v-info {
+    border-top: 0;
+    border-left: 1px solid var(--stroke);
+    overflow-y: auto;
+  }
+
+  .v-hint {
+    display: block;
+  }
+}
+
+@media (max-width: 959px) {
+  .v-img {
+    max-height: 56vh;
+  }
+
+  .v-nav {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /* keep close reachable while the stacked layout scrolls */
+  .v-close {
+    position: fixed;
+    top: 1.6rem;
+    right: 1.6rem;
+    z-index: 5;
+    background: rgba(20, 25, 34, .8);
+    border-color: rgba(255, 255, 255, .2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .v-head {
+    padding-right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .v-shell,
+  .v-backdrop {
+    transition: none;
+  }
+}

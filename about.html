@@ -2,764 +2,545 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — Stylianos Panagiotou</title>
-    <meta name="description" content="About Stylianos Panagiotou — CS graduate from Nicosia, Cyprus." />
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png?v=3">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png?v=3">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png?v=3">
-    <link rel="manifest" href="favicon_io/site.webmanifest?v=3">
-    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
-
-    <meta property="og:title" content="About — Stylianos Panagiotou" />
-    <meta property="og:description" content="CS Graduate from University of Cyprus. Internships at PwC, Playtech and more." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="color-scheme" content="dark light" />
-
-    <style>
-        :root {
-            --bg: #08090e;
-            --fg: #eaecf4;
-            --muted: #7c8099;
-            --glass: rgba(255, 255, 255, .05);
-            --line: rgba(255, 255, 255, .09);
-            --accent: #3d7eff;
-            --accent-light: #7aabff;
-            --cyan: #22d3ee;
-            --card: #0d0e18;
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root {
-                --bg: #f4f5fb;
-                --fg: #0d0e18;
-                --muted: #545870;
-                --glass: rgba(10, 10, 30, .05);
-                --line: rgba(20, 20, 40, .10);
-                --card: #ffffff;
-            }
-        }
-
-        [data-theme="light"] {
-            --bg: #f4f5fb;
-            --fg: #0d0e18;
-            --muted: #545870;
-            --glass: rgba(10, 10, 30, .05);
-            --line: rgba(20, 20, 40, .10);
-            --card: #ffffff;
-        }
-
-        [data-theme="dark"] {
-            --bg: #08090e;
-            --fg: #eaecf4;
-            --muted: #7c8099;
-            --glass: rgba(255, 255, 255, .05);
-            --line: rgba(255, 255, 255, .09);
-            --card: #0d0e18;
-        }
-
-        [data-theme="light"] .nav {
-            background: linear-gradient(180deg, rgba(244,245,251,.95), rgba(244,245,251,.70));
-        }
-
-        [data-theme="light"] .site-footer {
-            background:
-                radial-gradient(600px 220px at 50% 0, rgba(61,126,255,.08), transparent 60%),
-                linear-gradient(180deg, rgba(244,245,251,.85), rgba(244,245,251,.98));
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root:not([data-theme="dark"]) .nav {
-                background: linear-gradient(180deg, rgba(244,245,251,.95), rgba(244,245,251,.70));
-            }
-            :root:not([data-theme="dark"]) .site-footer {
-                background:
-                    radial-gradient(600px 220px at 50% 0, rgba(61,126,255,.08), transparent 60%),
-                    linear-gradient(180deg, rgba(244,245,251,.85), rgba(244,245,251,.98));
-            }
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            font: 16px/1.65 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
-            color: var(--fg);
-            background: var(--bg);
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .bg {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            background:
-                radial-gradient(900px 600px at 15% -5%, rgba(61, 126, 255, .12), transparent 55%),
-                radial-gradient(700px 500px at 85% 105%, rgba(34, 211, 238, .07), transparent 55%);
-        }
-
-        .noise {
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            mix-blend-mode: soft-light;
-            opacity: .08;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.35"/></svg>');
-            background-size: 160px 160px;
-        }
-
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            backdrop-filter: saturate(160%) blur(8px);
-            background: linear-gradient(180deg, rgba(8, 9, 14,.65), rgba(8, 9, 14,.30));
-            border-bottom: 1px solid var(--line);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 14px 18px;
-            flex-wrap: wrap;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 900;
-            letter-spacing: .06em;
-            min-width: 0;
-            font-size: 15px;
-        }
-
-        .brand span:last-child {
-            overflow-wrap: anywhere;
-        }
-
-        .logo {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            flex-shrink: 0;
-            background: conic-gradient(from 200deg, var(--accent), var(--cyan), var(--cyan), var(--accent));
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, .15) inset;
-        }
-
-        .menu {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .menu a {
-            padding: 8px 10px;
-            border-radius: 10px;
-            color: var(--muted);
-            font-size: 15px;
-            transition: .2s ease;
-        }
-
-        .menu a:hover {
-            background: var(--glass);
-            color: var(--fg);
-        }
-
-        .cta {
-            background: var(--accent);
-            color: white !important;
-            font-weight: 800;
-            padding: 10px 14px;
-            border-radius: 999px;
-            box-shadow: 0 8px 24px rgba(61, 126, 255, .30);
-        }
-
-        .wrap {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 28px;
-        }
-
-        h1 {
-            font-size: clamp(34px, 5vw, 52px);
-            margin: 24px 0 8px;
-            line-height: 1.08;
-        }
-
-        h2,
-        h3 {
-            line-height: 1.2;
-        }
-
-        .gradient {
-            background: linear-gradient(100deg, var(--accent-light), var(--cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .sub {
-            color: var(--muted);
-        }
-
-        .intro {
-            max-width: 72ch;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 22px;
-            margin-top: 22px;
-            align-items: start;
-        }
-
-        @media (min-width: 980px) {
-            .grid {
-                grid-template-columns: 380px minmax(0, 1fr);
-            }
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            overflow: hidden;
-            min-width: 0;
-        }
-
-        .card-body {
-            padding: 16px 18px;
-        }
-
-        .portrait {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-        }
-
-        .badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .badge {
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, .04);
-            padding: 6px 10px;
-            border-radius: 999px;
-            color: var(--fg);
-            font-size: 14px;
-            line-height: 1.35;
-        }
-
-        .facts {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-
-        @media (min-width: 640px) {
-            .facts {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .facts div {
-            background: rgba(255, 255, 255, .04);
-            border: 1px dashed var(--line);
-            border-radius: 12px;
-            padding: 10px 12px;
-            min-width: 0;
-        }
-
-        .facts strong {
-            display: block;
-            color: var(--fg);
-            margin-bottom: 2px;
-        }
-
-        .facts a {
-            color: var(--fg);
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-
-        .timeline {
-            position: relative;
-            margin-top: 18px;
-            padding-left: 18px;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(var(--accent), var(--cyan));
-        }
-
-        .t {
-            position: relative;
-            margin: 14px 0 14px 10px;
-            padding-left: 16px;
-        }
-
-        .t::before {
-            content: "";
-            position: absolute;
-            left: -9px;
-            top: 4px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 3px rgba(61, 126, 255,.25);
-        }
-
-        .t small {
-            color: var(--muted);
-            display: inline-block;
-            margin-top: 2px;
-        }
-
-        .section-title {
-            margin: 18px 0 6px;
-        }
-
-        .menu a[aria-current="page"] {
-            background: var(--glass);
-            color: var(--fg);
-        }
-
-        .theme-toggle {
-            background: var(--glass);
-            border: 1px solid var(--line);
-            color: var(--fg);
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-            transition: .2s ease;
-            flex-shrink: 0;
-            font-size: 17px;
-            font: inherit;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(61, 126, 255,.18);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(22px);
-            transition: opacity .55s ease, transform .55s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: none;
-        }
-
-        .site-footer {
-            margin-top: 34px;
-            padding: 28px 16px;
-            text-align: center;
-            color: var(--muted);
-            border-top: 1px solid var(--line);
-            background:
-                radial-gradient(600px 220px at 50% 0, rgba(61, 126, 255,.14), transparent 60%),
-                linear-gradient(180deg, rgba(8, 9, 14,.60), rgba(8, 9, 14,.92));
-        }
-
-        .site-footer p {
-            margin: 0 0 10px;
-        }
-
-        .site-footer .social {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .site-footer .social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 1px solid var(--line);
-            background: var(--glass);
-            color: var(--fg);
-            transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
-        }
-
-        .site-footer .social a:hover {
-            transform: translateY(-2px);
-            border-color: transparent;
-            background: linear-gradient(90deg, var(--accent), var(--cyan));
-            box-shadow: 0 10px 28px rgba(61, 126, 255,.35);
-            color: #fff;
-        }
-
-        .site-footer svg {
-            width: 20px;
-            height: 20px;
-            display: block;
-            fill: currentColor;
-        }
-
-        @media (max-width: 640px) {
-            .nav-inner {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 12px 14px;
-            }
-
-            .brand {
-                justify-content: center;
-                text-align: center;
-                font-size: 14px;
-            }
-
-            .menu {
-                justify-content: center;
-                width: 100%;
-                gap: 8px;
-            }
-
-            .menu a {
-                flex: 1 1 calc(50% - 8px);
-                text-align: center;
-                padding: 10px 12px;
-                font-size: 14px;
-            }
-
-            .cta {
-                padding: 10px 12px;
-            }
-
-            .wrap {
-                padding: 16px;
-            }
-
-            h1 {
-                font-size: clamp(28px, 10vw, 42px);
-                margin-top: 18px;
-            }
-
-            .card-body {
-                padding: 14px;
-            }
-
-            .badge {
-                font-size: 13px;
-            }
-
-            .facts {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                padding-left: 16px;
-            }
-
-            .t {
-                margin-left: 8px;
-                padding-left: 14px;
-            }
-
-            .site-footer {
-                margin-top: 26px;
-                padding: 22px 14px;
-            }
-
-            .site-footer .social a {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-
-            html {
-                scroll-behavior: auto;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Stylianos Panayiotou</title>
+  <meta name="description"
+    content="About Stylianos Panayiotou — Operations Specialist at Moneygate, co-founder of VISION., and M.Sc. Artificial Intelligence student at the University of Cyprus." />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png?v=3">
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+  <script defer src="assets/site.js"></script>
+
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .profile {
+      padding-bottom: 5rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .photo-col {
+      position: relative;
+      justify-self: center;
+      width: min(380px, 80vw);
+    }
+
+    .photo {
+      border-radius: 2rem;
+      padding: 2px;
+      background: var(--grad);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, .35), 0 0 80px rgba(78, 133, 191, .22);
+    }
+
+    .photo img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: calc(2rem - 2px);
+    }
+
+    .photo-tag {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      padding: .9rem 1.1rem;
+      border-radius: 1.25rem;
+      background: rgba(20, 25, 34, .72);
+      border: 1px solid rgba(255, 255, 255, .12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .photo-tag strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .photo-tag span {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .panel {
+      border-radius: 2rem;
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(37, 47, 63, .8), rgba(29, 37, 50, .8));
+      padding: 1.75rem;
+    }
+
+    .panel+.panel {
+      margin-top: 1rem;
+    }
+
+    .panel h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -.01em;
+      margin-bottom: 1.1rem;
+    }
+
+    .facts {
+      display: grid;
+      gap: .25rem;
+    }
+
+    .fact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--stroke);
+      font-size: .95rem;
+    }
+
+    .fact:last-child {
+      border-bottom: 0;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      flex: none;
+    }
+
+    .fact a,
+    .fact b {
+      font-weight: 500;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .fact a {
+      transition: color .2s;
+    }
+
+    .fact a:hover {
+      color: var(--a1);
+    }
+
+    @media (min-width: 900px) {
+      .profile-grid {
+        grid-template-columns: 5fr 7fr;
+        gap: 4rem;
+      }
+
+      .photo-col {
+        position: sticky;
+        top: 7rem;
+      }
+    }
+
+    /* ─── Timeline ─── */
+    .timeline-sec {
+      padding: 4rem 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before,
+    .timeline-fill {
+      content: '';
+      position: absolute;
+      left: .45rem;
+      top: .5rem;
+      bottom: .5rem;
+      width: 2px;
+      border-radius: 2px;
+      background: var(--stroke);
+    }
+
+    .timeline-fill {
+      background: var(--grad);
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+
+    .no-lenis .timeline-fill,
+    html:not(.js) .timeline-fill {
+      transform: scaleY(1);
+    }
+
+    .t-item {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem 1.25rem;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: .75rem;
+      border-radius: 1.5rem;
+      border: 1px solid var(--stroke);
+      background: rgba(29, 37, 50, .55);
+      transition: background-color .35s var(--ease), border-color .35s, transform .35s var(--ease);
+    }
+
+    .t-item:hover {
+      background: var(--surface-2);
+      border-color: rgba(137, 170, 204, .4);
+      transform: translateX(4px);
+    }
+
+    .t-item::before {
+      content: '';
+      position: absolute;
+      left: calc(-2rem + .45rem - 5px);
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--a1);
+    }
+
+    .t-item.now::before {
+      background: var(--a1);
+      box-shadow: 0 0 0 5px rgba(137, 170, 204, .2);
+    }
+
+    .t-main {
+      flex: 1;
+      min-width: 14rem;
+    }
+
+    .t-role {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+    }
+
+    .t-org {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: .15rem;
+    }
+
+    .t-date {
+      font-size: .8rem;
+      color: var(--muted);
+      padding: .35rem .8rem;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      white-space: nowrap;
+    }
+
+    .two-col {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 900px) {
+      .two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="bg"></div>
-    <div class="noise"></div>
+  <header class="nav" id="nav">
+    <nav class="nav-pill" aria-label="Main">
+      <a class="logo" href="index.html" aria-label="Home"><span>SP</span></a>
+      <span class="nav-div"></span>
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html" aria-current="page">About</a>
+      <a class="nav-link" href="portfolio.html">Projects</a>
+      <a class="nav-link" href="services.html">Services</a>
+      <a class="nav-link hide-sm" href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener">Resume</a>
+      <span class="nav-div"></span>
+      <a class="say-hi" href="#contact"><span>Say hi ↗</span></a>
+    </nav>
+  </header>
 
-    <header class="nav">
-        <div class="nav-inner">
-            <a class="brand" href="index.html">
-                <span class="logo"></span>
-                <span>Stylianos Panagiotou</span>
-            </a>
+  <div class="ambient" aria-hidden="true"></div>
 
-            <nav class="menu" aria-label="Main">
-                <a href="index.html">Home</a>
-                <a href="about.html" aria-current="page">About</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener" class="cta">Resume</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode">🌙</button>
-            </nav>
-        </div>
-    </header>
-
-    <main class="wrap">
-        <h1><span class="gradient">About Me</span></h1>
-        <p class="sub intro">
-            CS graduate who learns fast, solves problems, and enjoys building clean, user-friendly software.
+  <div class="page">
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="eyebrow" data-reveal>About me</div>
+        <h1 class="s-title" data-reveal>The person behind<br><span class="accent grad-text">the projects</span></h1>
+        <p class="s-sub" data-reveal>
+          Computer Science graduate from the University of Cyprus, now pursuing an M.Sc. in Artificial Intelligence at UCY
+          while working as an Operations Specialist at Moneygate Solutions LTD. I also co-founded VISION., a digital growth
+          studio in Cyprus. I enjoy practical software, clear communication, and learning through real work.
         </p>
+      </div>
+    </section>
 
-        <section class="grid reveal">
-            <article class="card">
-                <img class="portrait" src="pic.png" alt="Portrait of Stylianos Panagiotou" />
-                <div class="card-body">
-                    <div class="badges">
-                        <span class="badge">Team Player</span>
-                        <span class="badge">Autonomous</span>
-                        <span class="badge">Eager to Learn</span>
-                        <span class="badge">Quick Learner</span>
-                        <span class="badge">Adaptable</span>
-                        <span class="badge">Problem Solver</span>
-                        <span class="badge">Troubleshooting Skills</span>
-                        <span class="badge">Growth Oriented</span>
-                        <span class="badge">Attention to Detail</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-body">
-                    <h2 style="margin:0 0 6px;">Computer Science Graduate</h2>
-                    <p class="sub" style="margin:0 0 12px;">University of Cyprus · Nicosia, Cyprus</p>
-
-                    <div class="facts">
-                        <div>
-                            <strong>City</strong>
-                            Nicosia, Cyprus
-                        </div>
-                        <div>
-                            <strong>Email</strong>
-                            <a href="mailto:spanay02@gmail.com">spanay02@gmail.com</a>
-                        </div>
-                        <div>
-                            <strong>LinkedIn</strong>
-                            <a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank"
-                                rel="noopener">linkedin.com/in/stylianos-panayiotou-0444552a6</a>
-                        </div>
-                        <div>
-                            <strong>GitHub</strong>
-                            <a href="https://github.com/spanayi02" target="_blank"
-                                rel="noopener">github.com/spanayi02</a>
-                        </div>
-                    </div>
-
-                    <h3 class="section-title">Skills</h3>
-                    <div class="badges">
-                        <span class="badge">C</span>
-                        <span class="badge">C++</span>
-                        <span class="badge">C#</span>
-                        <span class="badge">Unity</span>
-                        <span class="badge">Java</span>
-                        <span class="badge">HTML</span>
-                        <span class="badge">CSS</span>
-                        <span class="badge">JavaScript</span>
-                        <span class="badge">MSSQL</span>
-                        <span class="badge">Next.js</span>
-                        <span class="badge">Firebase</span>
-                        <span class="badge">Git</span>
-                        <span class="badge">Android Studio</span>
-                        <span class="badge">XAMPP</span>
-                        <span class="badge">Figma</span>
-                        <span class="badge">Justinmind</span>
-                        <span class="badge">Microsoft Office</span>
-                    </div>
-
-                    <h3 class="section-title">Experience</h3>
-                    <div class="timeline">
-                        <div class="t">
-                            <strong>IT Support Intern — PwC Cyprus</strong><br>
-                            <small>Jun 2025 – Present · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Social Media Manager — UCY Career Centre</strong><br>
-                            <small>Sep 2025 – Dec 2025 · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Databases Intern — Playtech BGT Sports</strong><br>
-                            <small>Jun 2024 – Aug 2024 · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Barman — Aelia Wellness Retreat</strong><br>
-                            <small>Jun 2021 – Sep 2023 · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Sales Assistant (IT Dept) — ITC PublicWorld Ltd</strong><br>
-                            <small>Oct 2021 – Oct 2022 · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Rapid Test Clerk — Highworth Ltd</strong><br>
-                            <small>Apr 2021 – Jun 2021 · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Waiter — Iparcho Tavern</strong><br>
-                            <small>Jun 2017 – Dec 2018 · Nicosia</small>
-                        </div>
-                    </div>
-
-                    <h3 class="section-title">Education</h3>
-                    <div class="timeline">
-                        <div class="t">
-                            <strong>University of Cyprus — B.Sc. Computer Science</strong><br>
-                            <small>Sep 2021 – May 2025 · Nicosia</small>
-                        </div>
-
-                        <div class="t">
-                            <strong>Latsia Lyceum — High School Graduate</strong><br>
-                            <small>Sep 2017 – Jul 2020 · Nicosia</small>
-                        </div>
-                    </div>
-
-                    <h3 class="section-title">Certifications</h3>
-                    <div class="timeline">
-                        <div class="t">
-                            <strong>Cambridge IGCSE — English as a Second Language (Grade A)</strong>
-                        </div>
-
-                        <div class="t">
-                            <strong>Social Media Manager — StudentLife Academy</strong>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <p>© <span id="y"></span> <strong>Stylianos Panagiotou</strong></p>
-
-        <div class="social">
-            <a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank" rel="noopener"
-                aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                        d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.9h.05c.53-.95 1.82-1.94 3.75-1.94 4.01 0 4.75 2.64 4.75 6.07V21h-4v-4.93c0-1.18-.02-2.69-1.64-2.69-1.64 0-1.89 1.28-1.89 2.61V21H9z" />
-                </svg>
-            </a>
-
-            <a href="https://github.com/spanayi02" target="_blank" rel="noopener" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                        d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.41-4.04-1.41-.55-1.41-1.34-1.79-1.34-1.79-1.1-.76.08-.75.08-.75 1.21.08 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.31-5.48-1.34-5.48-5.96 0-1.32.47-2.4 1.24-3.25-.13-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6.01 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.69.25 2.94.12 3.25.78.85 1.24 1.93 1.24 3.25 0 4.63-2.81 5.64-5.49 5.95.43.37.81 1.1.81 2.23v3.3c0 .32.21.7.83.58A12 12 0 0 0 12 .5z" />
-                </svg>
-            </a>
-
-            <a href="mailto:spanay02@gmail.com" aria-label="Email">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5z" />
-                </svg>
-            </a>
+    <section class="profile">
+      <div class="wrap profile-grid">
+        <div class="photo-col" data-reveal>
+          <div class="photo">
+            <img src="images/portrait.jpg" alt="Portrait of Stylianos Panayiotou" width="1000" height="1250" />
+          </div>
+          <div class="photo-tag">
+            <strong>Operations Specialist</strong>
+            <span>Moneygate Solutions LTD · Nicosia, Cyprus</span>
+          </div>
         </div>
+
+        <div>
+          <div class="panel" data-reveal>
+            <h3>Quick facts</h3>
+            <div class="facts">
+              <div class="fact"><span>City</span><b>Nicosia, Cyprus</b></div>
+              <div class="fact"><span>Email</span><a href="mailto:spanay02@gmail.com">spanay02@gmail.com</a></div>
+              <div class="fact"><span>LinkedIn</span><a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank" rel="noopener">stylianos-panayiotou</a></div>
+              <div class="fact"><span>GitHub</span><a href="https://github.com/spanayi02" target="_blank" rel="noopener">github.com/spanayi02</a></div>
+              <div class="fact"><span>Resume</span><a href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener">Download PDF ↗</a></div>
+            </div>
+          </div>
+
+          <div class="panel" data-reveal>
+            <h3>How I work</h3>
+            <div class="chip-row">
+              <span class="chip">Team Player</span>
+              <span class="chip">Autonomous</span>
+              <span class="chip">Eager to Learn</span>
+              <span class="chip">Quick Learner</span>
+              <span class="chip">Adaptable</span>
+              <span class="chip">Problem Solver</span>
+              <span class="chip">Troubleshooting Skills</span>
+              <span class="chip">Growth Oriented</span>
+              <span class="chip">Attention to Detail</span>
+            </div>
+          </div>
+
+          <div class="panel" data-reveal>
+            <h3>Skills &amp; tools</h3>
+            <div class="chip-row">
+              <span class="chip">C</span>
+              <span class="chip">C++</span>
+              <span class="chip">C#</span>
+              <span class="chip">Unity</span>
+              <span class="chip">Java</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">MSSQL</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">Git</span>
+              <span class="chip">Android Studio</span>
+              <span class="chip">XAMPP</span>
+              <span class="chip">Figma</span>
+              <span class="chip">Justinmind</span>
+              <span class="chip">Microsoft Office</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-sec">
+      <div class="wrap">
+        <div class="s-head">
+          <div data-reveal>
+            <div class="eyebrow">Experience</div>
+            <h2 class="s-title">Where I&rsquo;ve <span class="accent grad-text">worked</span></h2>
+            <p class="s-sub">From tech internships to customer-facing jobs, each one taught me something about people and systems.</p>
+          </div>
+        </div>
+        <div class="timeline" data-timeline>
+          <i class="timeline-fill" aria-hidden="true"></i>
+          <div class="t-item now" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Operations Specialist</div>
+              <div class="t-org">Moneygate Solutions LTD · Nicosia</div>
+            </div>
+            <span class="t-date">Mar 2026 — Present</span>
+          </div>
+          <div class="t-item now" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Co-founder</div>
+              <div class="t-org">VISION. Digital Growth Studio · Cyprus</div>
+            </div>
+            <span class="t-date">2026 — Present</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">IT Support Intern</div>
+              <div class="t-org">PwC Cyprus · Nicosia</div>
+            </div>
+            <span class="t-date">Jun 2025 — Feb 2026</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Social Media Manager</div>
+              <div class="t-org">UCY Career Centre · Nicosia</div>
+            </div>
+            <span class="t-date">Sep 2025 — Dec 2025</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Databases Intern</div>
+              <div class="t-org">Playtech BGT Sports · Nicosia</div>
+            </div>
+            <span class="t-date">Jun 2024 — Aug 2024</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Barman</div>
+              <div class="t-org">Aelia Wellness Retreat · Nicosia</div>
+            </div>
+            <span class="t-date">Jun 2021 — Sep 2023</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Sales Assistant (IT Dept)</div>
+              <div class="t-org">ITC PublicWorld Ltd · Nicosia</div>
+            </div>
+            <span class="t-date">Oct 2021 — Oct 2022</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Rapid Test Clerk</div>
+              <div class="t-org">Highworth Ltd · Nicosia</div>
+            </div>
+            <span class="t-date">Apr 2021 — Jun 2021</span>
+          </div>
+          <div class="t-item" data-reveal>
+            <div class="t-main">
+              <div class="t-role">Waiter</div>
+              <div class="t-org">Iparcho Tavern · Nicosia</div>
+            </div>
+            <span class="t-date">Jun 2017 — Dec 2018</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-sec">
+      <div class="wrap two-col">
+        <div>
+          <div data-reveal>
+            <div class="eyebrow">Education</div>
+            <h2 class="s-title" style="margin-bottom:2rem">Where I <span class="accent grad-text">studied</span></h2>
+          </div>
+          <div class="timeline" data-timeline>
+            <i class="timeline-fill" aria-hidden="true"></i>
+            <div class="t-item now" data-reveal>
+              <div class="t-main">
+                <div class="t-role">M.Sc. Artificial Intelligence</div>
+                <div class="t-org">University of Cyprus · Nicosia</div>
+              </div>
+              <span class="t-date">2026 — Present</span>
+            </div>
+            <div class="t-item" data-reveal>
+              <div class="t-main">
+                <div class="t-role">B.Sc. Computer Science</div>
+                <div class="t-org">University of Cyprus · Nicosia</div>
+              </div>
+              <span class="t-date">2021 — 2025</span>
+            </div>
+            <div class="t-item" data-reveal>
+              <div class="t-main">
+                <div class="t-role">High School Graduate</div>
+                <div class="t-org">Latsia Lyceum · Nicosia</div>
+              </div>
+              <span class="t-date">2017 — 2020</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div data-reveal>
+            <div class="eyebrow">Certifications</div>
+            <h2 class="s-title" style="margin-bottom:2rem">What I&rsquo;ve <span class="accent grad-text">earned</span></h2>
+          </div>
+          <div class="timeline" data-timeline>
+            <i class="timeline-fill" aria-hidden="true"></i>
+            <div class="t-item" data-reveal>
+              <div class="t-main">
+                <div class="t-role">Cambridge IGCSE</div>
+                <div class="t-org">English as a Second Language · Grade A</div>
+              </div>
+            </div>
+            <div class="t-item" data-reveal>
+              <div class="t-main">
+                <div class="t-role">Social Media Manager</div>
+                <div class="t-org">StudentLife Academy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / FOOTER -->
+    <footer class="contact" id="contact">
+      <div class="contact-media" aria-hidden="true">
+        <video data-hls muted loop playsinline preload="none"></video>
+      </div>
+      <div class="contact-inner">
+        <div class="big-marquee" aria-hidden="true">
+          <div class="big-marquee-track" id="bigMarquee"></div>
+        </div>
+        <div class="wrap">
+          <div class="contact-cta">
+            <h2 class="s-title" data-reveal>Let&rsquo;s build something <span class="accent grad-text">together</span></h2>
+            <p data-reveal>Want to talk about a role, a project, or an idea? I am always happy to meet people building useful things.</p>
+            <div class="contact-actions" data-reveal>
+              <a class="btn btn-solid" href="mailto:spanay02@gmail.com">spanay02@gmail.com<span class="arrow">↗</span></a>
+              <a class="btn btn-outline" href="STYLIANOS_PANAGIOTOU_CV_2026.pdf" target="_blank" rel="noopener">Resume</a>
+            </div>
+          </div>
+          <div class="foot">
+            <nav aria-label="Social">
+              <a href="https://www.linkedin.com/in/stylianos-panayiotou-0444552a6/" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/spanayi02" target="_blank" rel="noopener">GitHub</a>
+              <a href="index.html">Home</a>
+              <a href="portfolio.html">Projects</a>
+            </nav>
+            <span>© <span data-year></span> Stylianos Panayiotou</span>
+          </div>
+        </div>
+      </div>
     </footer>
+  </div>
 
-    <script>
-        document.getElementById('y').textContent = new Date().getFullYear();
-
-        // Theme toggle
-        (function () {
-            const root = document.documentElement;
-            const btn = document.getElementById('themeToggle');
-            const sys = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const saved = localStorage.getItem('theme');
-            let current = saved || (sys ? 'dark' : 'light');
-            if (!saved) root.setAttribute('data-theme', current);
-
-            function apply(t) {
-                current = t;
-                root.setAttribute('data-theme', t);
-                btn.textContent = t === 'dark' ? '🌙' : '☀️';
-                btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-            }
-
-            apply(current);
-            btn.addEventListener('click', function () {
-                var next = current === 'dark' ? 'light' : 'dark';
-                localStorage.setItem('theme', next);
-                apply(next);
-            });
-        })();
-
-        // Scroll-reveal
-        (function () {
-            var els = document.querySelectorAll('.reveal');
-            if (!els.length) return;
-            var obs = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('visible');
-                        obs.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.08 });
-            els.forEach(function (el) { obs.observe(el); });
-        })();
-    </script>
+  <script>
+    (window.SitePage = window.SitePage || []).push(function (Site) {
+      if (!Site.hasGsap) return;
+      // Timeline lines fill in as you scroll through them
+      document.querySelectorAll('[data-timeline]').forEach(function (tl) {
+        const fill = tl.querySelector('.timeline-fill');
+        if (Site.reduce) { gsap.set(fill, { scaleY: 1 }); return; }
+        gsap.to(fill, {
+          scaleY: 1, ease: 'none',
+          scrollTrigger: { trigger: tl, start: 'top 75%', end: 'bottom 60%', scrub: 0.6 }
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
