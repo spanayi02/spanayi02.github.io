@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const wrap = document.createElement('div');
     wrap.innerHTML =
       '<div class="hi-backdrop"></div>' +
-      '<div class="hi-panel" role="dialog" aria-modal="true" aria-labelledby="hiTitle">' +
+      '<div class="hi-panel" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="hiTitle">' +
       '  <div class="hi-head">' +
       '    <div>' +
       '      <h2 id="hiTitle">Say hi <span class="wave" aria-hidden="true">👋</span></h2>' +

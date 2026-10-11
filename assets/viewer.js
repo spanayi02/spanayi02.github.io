@@ -14,6 +14,8 @@
   viewer.setAttribute('aria-modal', 'true');
   viewer.setAttribute('aria-labelledby', 'vTitle');
   viewer.setAttribute('aria-hidden', 'true');
+  // Lenis blocks touch scrolling while stopped; this lets the dialog itself scroll on phones
+  viewer.setAttribute('data-lenis-prevent', '');
   viewer.innerHTML =
     '<div class="v-backdrop"></div>' +
     '<div class="v-shell">' +

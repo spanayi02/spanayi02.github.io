@@ -759,6 +759,20 @@
       height: auto;
     }
 
+    /* phones: cards are often taller than the screen, so sticky stacking traps them; use a plain list */
+    @media (max-width: 767px) {
+      .stack-item {
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .stack .card {
+        position: relative;
+        top: auto !important;
+        will-change: auto;
+      }
+    }
+
     .card {
       position: sticky;
       border-radius: 2rem;
@@ -2141,16 +2155,19 @@
         const cards = gsap.utils.toArray('#stack .card');
         const total = cards.length;
         const setters = cards.map(function (c) { return gsap.quickSetter(c, 'scale'); });
-        ScrollTrigger.create({
-          trigger: '#stack', start: 'top top', end: 'bottom bottom',
-          onUpdate: function (self) {
-            cards.forEach(function (card, i) {
-              const target = 1 - (total - 1 - i) * 0.04;
-              const s = i / total;
-              const t = self.progress <= s ? 0 : (self.progress - s) / (1 - s);
-              setters[i](1 + (target - 1) * t);
-            });
-          }
+        // desktop only: on phones the cards are a plain list (see CSS)
+        gsap.matchMedia().add('(min-width: 768px)', function () {
+          ScrollTrigger.create({
+            trigger: '#stack', start: 'top top', end: 'bottom bottom',
+            onUpdate: function (self) {
+              cards.forEach(function (card, i) {
+                const target = 1 - (total - 1 - i) * 0.04;
+                const s = i / total;
+                const t = self.progress <= s ? 0 : (self.progress - s) / (1 - s);
+                setters[i](1 + (target - 1) * t);
+              });
+            }
+          });
         });
       })();
 
